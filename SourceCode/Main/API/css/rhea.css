@@ -1,0 +1,1310 @@
+/* Rhea.css */
+
+/* This stylesheet is the defualt (base) styling for all the various components of Rhea's Family Trees. */
+
+/* Import PT Sans font (used in Loader) */
+@import url('https://fonts.googleapis.com/css?family=PT+Sans&display=swap');
+
+/* Variables */
+.rhea-family-tree {
+
+	/* Colors */
+	--colorRed: #D5382A;
+	--colorDarkRed: #5C3A31;
+	--colorRedBrown: #46271E;
+	--colorBrown: #674534;
+	--colorYellow: #AF945C;
+	--colorCream: #FAF7EA;
+	--colorDarkCream: #EFE6D4;
+	--colorDarkBrown: #483e09;
+	--colorMaroon: #80002B;
+
+	/* rootNodeHeight sets the default height for the family tree viewport/rootNode */
+	--rootNodeHeight: 650px;
+	--rootNodeBg: #ffffff24; /* This sets the static background (does NOT scroll with trees). Can be a color or image. */
+	--rootNodeBorder: 2px solid #a296374f;; /* This sets the border of the viewport, if desired. */
+
+	/* Loader: This is the element that shows when trees are being rendered */
+	--loaderBgColor: #a296374f;
+	--loaderBorder: 1px solid #ccc;
+	--loaderFont: 'PT Sans', sans-serif;
+	--loaderTransition: all .8s ease-out;
+
+	/* ScrollableContainer: This is the element that pans. To set a background for the family tree layout, it is NOT advised to add it here, but to make this transparent and set the var --familyTreeBg instead. */
+	--minimumContainerSize: 3000px; /* The element should be square, and should be larger than the tree display and viewport dimensions */
+	--containerBg: transparent; /* Used for demo purposes. If using a static color or image for the background of the rendered tree, set this to transparent. If an image is used, this image WILL move as the container is panned. */
+	--containerCursor: grab; /* The cursor icon to display to indicate the container can be panned. */
+	--containerTransition: all .3s ease-in-out; /* This is ONLY valid when search results result in the tree moving. */
+
+	/* FT Node: This is the node that contains the character display nodes */
+	--charRootNodeCursor: pointer; /* This sets the cursor icon to indicate the character is "clickable" */
+	--charRootNodeSize: 120px; /* This sets the size of the characterNodes'. This should be square (same width and height) */
+	--charRootNodeBottomSize: 5rem; /* This sets a margin under the characterRootNode (for sizing and positioning calculations). Advised to leave as-is. */
+
+	/* Relationship Lines: These are the lines drawn from character to character to depict relaitionships */
+	--lineWidth: 2px;
+	--lineColor: black;
+
+	/* Character Nodes: These are the elements that actually display the character's data */
+	--characterPortraitPadding: 5px;
+	--characterPortraitOuterBorder: 1px solid #777; /* This is the border around the outside of the portrait frame */
+	--characterPortraitInnerBorder: 1px solid #777; /* This is the border around the image itself */
+	--characterPortraitFrameBg: linear-gradient(90deg, rgba(87,87,88,1) 0%, rgba(213,213,213,1) 18%, rgba(94,94,94,1) 35%, rgba(213,213,213,1) 65%, rgba(87,87,88,1) 100%); /* This is the color of the portrait frame */
+	--characterPortraitAnimation: portrait-frame 200s infinite; /* This animates the portrait frame. By default, it slowly rotates */
+	--characterPortraitBg: transparent; /* This is the color behind the portrait image. Not visible if image is set to full-width (default) */
+	--characterPortraitWidth: 100%; /* Sets the size of the image. By default, set to 100% so that it fills the portrait frame */
+	--characterPortraitBorderRadius: 50%; /* Defines the shape of the portrait. 50% = circle, 0px = rectangle/square */
+
+	--characterNamePadding: 6px; /* The padding of the character's name text container */
+	--characterNameBg: #aaa; /* The background of the character's name text container */
+	--characterNameBorder: 1px solid #999; /* The border around the character's name */
+	--characterNameBorderRadius: 5px; /* The curvature of the "corners" of the character's name */
+
+	--characterLabelBg: var(--colorCream); /* This is the background of the character node's text. Can be a color or image. */
+	--characterHonorificSize: 0.8em; /* This sets the font-size for the title/honorific */
+	--characterHonorificLineHeight: 0.9em; /* Setting this line-height adjusts the amount of space the specific label takes up vertically */
+	--characterHonorificFont: sans-serif; /* The font-family to use for the honorific */
+	--characterHonorificColor: var(--colorDarkBrown); /* The color of the title/honorific */
+
+	--characterNameSize: 1em; /* This sets the font-size for the name */
+	--characterNameLineHeight: 1.1em; /* Setting this line-height adjusts the amount of space the specific label takes up vertically */
+	--characterNameFont: sans-serif; /* The font-family to use for the name */
+	--characterNameColor: var(--colorMaroon); /* The color of the character's name (Note, this is a hyperlink) */
+
+	--characterDatesSize: 0.8em; /* This sets the font-size for the dates */
+	--characterDatesLineHeight: 0.9em; /* Setting this line-height adjusts the amount of space the specific label takes up vertically */
+	--characterDatesFont: sans-serif; /* The font-family to use for the dates */
+	--characterDatesColor: var(--colorDarkBrown); /* The color of the character's lifespan dates */
+
+	--characterRelationshipCardFont: sans-serif; /* This sets the font for the relationship-flyout (on hover) */
+	--characterRelationshipCardSize: 0.8em; /* This sets the font-size for the relationship-flyout */
+	--characterRelationshipCardBg: black; /* This is the background for the relationship-flyout. Can be a color or image */
+	--characterRelationshipCardColor: white; /* The color of the text in the relationship-flyout */
+
+	/* Main Character Node */
+	--mainCharWidth: 120px; /* This overrides the default character node width */
+	--mainCharPortraitPadding: 7px; /* Overrides the normal padding width for the portrait */
+	--mainCharPortraitBg: transparent; /* Overrides the default portrait background. Advised to leave transparent */
+	--mainCharPortraitOuterBorder: 1px solid #777; /* Overrides the main border around the portait frame */
+	--mainCharPortraitFrameBg: linear-gradient(90deg, rgb(197, 176, 38) 0%, rgb(222, 197, 15) 18%, rgba(244,243,220,1) 35%, rgb(228, 197, 10) 65%, rgb(236, 194, 100) 100%);
+	/*--mainCharPortraitFrameBg: linear-gradient(90deg, rgba(195,196,139,1) 0%, rgba(138,135,7,1) 18%, rgba(244,243,220,1) 35%, rgba(138,135,7,1) 65%, rgba(195,196,139,1) 100%); !* This is the color for the portrait frame *!*/
+	--mainCharPortraitAnimation: portrait-frame 200s infinite; /* Overrides the default animation for the portrait frame */
+
+	/* Main Character's Spouse Node */
+	--mainCharSpouseWidth: 120px; /* This overrides the default character node width */
+	--mainCharSpousePortraitPadding: 5px; /* Overrides the normal padding width for the portrait */
+	--mainCharSpousePortraitBg: transparent; /* Overrides the default portrait background. Advised to leave transparent */
+	--mainCharSpousePortraitOuterBorder: 1px solid #777; /* Overrides the main border around the portait frame */
+	--mainCharSpousePortraitFrameBg: linear-gradient(90deg, rgba(87,87,88,1) 0%, rgba(213,213,213,1) 18%, rgba(94,94,94,1) 35%, rgba(213,213,213,1) 65%, rgba(87,87,88,1) 100%); /* This is the color for the portrait frame */
+	--mainCharSpousePortraitAnimation: portrait-frame 200s infinite; /* Overrides the default animation for the portrait frame */
+
+	/* Main Character's Children Nodes */
+	--mainCharChildWidth: 120px; /* This overrides the default character node width */
+	--mainCharChildPortraitPadding: 5px; /* Overrides the normal padding width for the portrait */
+	--mainCharChildPortraitBg: transparent; /* Overrides the default portrait background. Advised to leave transparent */
+	--mainCharChildPortraitOuterBorder: 1px solid #777; /* Overrides the main border around the portait frame */
+	--mainCharChildPortraitFrameBg: linear-gradient(90deg, rgba(87,87,88,1) 0%, rgba(213,213,213,1) 18%, rgba(94,94,94,1) 35%, rgba(213,213,213,1) 65%, rgba(87,87,88,1) 100%); /* This is the color for the portrait frame */
+	--mainCharChildPortraitAnimation: portrait-frame 200s infinite; /* Overrides the default animation for the portrait frame */
+
+	/* Main Character's Grandchildren Node */
+	--mainCharGrandchildWidth: 120px; /* This overrides the default character node width */
+	--mainCharGrandchildPortraitPadding: 5px; /* Overrides the normal padding width for the portrait */
+	--mainCharGrandchildPortraitBg: transparent; /* Overrides the default portrait background. Advised to leave transparent */
+	--mainCharGrandchildPortraitOuterBorder: 1px solid #777; /* Overrides the main border around the portait frame */
+	--mainCharGrandchildPortraitFrameBg: linear-gradient(90deg, rgba(87,87,88,1) 0%, rgba(213,213,213,1) 18%, rgba(94,94,94,1) 35%, rgba(213,213,213,1) 65%, rgba(87,87,88,1) 100%); /* This is the color for the portrait frame */
+	--mainCharGrandchildPortraitAnimation: portrait-frame 200s infinite; /* Overrides the default animation for the portrait frame */
+
+	/* Main Character's Parent Nodes */
+	--mainCharParentWidth: 120px; /* This overrides the default character node width */
+	--mainCharParentPortraitPadding: 5px; /* Overrides the normal padding width for the portrait */
+	--mainCharParentPortraitBg: transparent; /* Overrides the default portrait background. Advised to leave transparent */
+	--mainCharParentPortraitOuterBorder: 1px solid #777; /* Overrides the main border around the portait frame */
+	--mainCharParentPortraitFrameBg: linear-gradient(90deg, rgba(87,87,88,1) 0%, rgba(213,213,213,1) 18%, rgba(94,94,94,1) 35%, rgba(213,213,213,1) 65%, rgba(87,87,88,1) 100%); /* This is the color for the portrait frame */
+	--mainCharParentPortraitAnimation: portrait-frame 200s infinite; /* Overrides the default animation for the portrait frame */
+
+	/* Main Character's Grandparent Nodes */
+	--mainCharGrandparentWidth: 120px; /* This overrides the default character node width */
+	--mainCharGrandparentPortraitPadding: 5px; /* Overrides the normal padding width for the portrait */
+	--mainCharGrandparentPortraitBg: transparent; /* Overrides the default portrait background. Advised to leave transparent */
+	--mainCharGrandparentPortraitOuterBorder: 1px solid #777; /* Overrides the main border around the portait frame */
+	--mainCharGrandparentPortraitFrameBg: linear-gradient(90deg, rgba(87,87,88,1) 0%, rgba(213,213,213,1) 18%, rgba(94,94,94,1) 35%, rgba(213,213,213,1) 65%, rgba(87,87,88,1) 100%); /* This is the color for the portrait frame */
+	--mainCharGrandparentPortraitAnimation: portrait-frame 200s infinite; /* Overrides the default animation for the portrait frame */
+
+	/* Main Character's Greatgrandparent Nodes */
+	--mainCharGreatgrandparentWidth: 120px; /* This overrides the default character node width */
+	--mainCharGreatgrandparentPortraitPadding: 5px; /* Overrides the normal padding width for the portrait */
+	--mainCharGreatgrandparentPortraitBg: transparent; /* Overrides the default portrait background. Advised to leave transparent */
+	--mainCharGreatgrandparentPortraitOuterBorder: 1px solid #777; /* Overrides the main border around the portait frame */
+	--mainCharGreatgrandparentPortraitFrameBg: linear-gradient(90deg, rgba(87,87,88,1) 0%, rgba(213,213,213,1) 18%, rgba(94,94,94,1) 35%, rgba(213,213,213,1) 65%, rgba(87,87,88,1) 100%); /* This is the color for the portrait frame */
+	--mainCharGreatgrandparentPortraitAnimation: portrait-frame 200s infinite; /* Overrides the default animation for the portrait frame */
+
+	/* Half-Blood Settings */
+	--halfBloodPortraitFrameBg: linear-gradient(90deg, rgba(196,171,139,1) 0%, rgba(138,100,7,1) 18%, rgba(244,237,220,1) 35%, rgba(138,105,7,1) 65%, rgba(196,178,139,1) 100%);
+
+	/* Search Result */
+	--search-result-shadow-color: rgba(0,0,0,0.47);
+	--search-result-shadow: 0px 0px 15px 1px var(--search-result-shadow-color);
+}
+
+/* The Family Tree Root Node; This is the element rendered by use of WABBC. It is designed to fill its parent container. To restrict width, use a [container] element with fixed sizing. */
+.rhea-family-tree {
+	width: 100%;
+	height: var(--rootNodeHeight);
+	position: relative;
+	overflow: hidden;
+	border: var(--rootNodeBorder);
+	border-radius: 4px;
+	background: var(--rootNodeBg);
+}
+
+.rhea-family-tree.loading .loader {
+	z-index: 1500;
+	opacity: 1;
+}
+
+.rhea-family-tree .loader {
+	z-index: -1;
+	opacity: 0;
+	position: absolute;
+	background-color: var(--loaderBgColor);
+	border: var(--loaderBorder);
+	width: 100%;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	justify-content: center;
+	align-items: center;
+	transition: var(--loaderTransition);
+	font-family: var(--loaderFont);
+	font-weight: 800;
+	background: #f5f5f5d4;
+	font-size: 1.8em;
+	color: #444;
+	text-shadow:
+			1px 0px 1px #ccc, 0px 1px 1px #eee,
+			2px 1px 1px #ccc, 1px 2px 1px #eee,
+			3px 2px 1px #ccc, 2px 3px 1px #eee,
+			4px 3px 1px #ccc, 3px 4px 1px #eee,
+			5px 4px 1px #ccc, 4px 5px 1px #eee,
+			6px 5px 1px #ccc, 5px 6px 1px #eee,
+			7px 6px 1px #ccc;
+
+}
+
+.rhea-family-tree .scrollable-container {
+	min-width: var(--minimumContainerSize);
+	min-height: var(--minimumContainerSize);
+	position: absolute;
+	background: var(--containerBg);
+	opacity: 1;
+	cursor: var(--containerCursor);
+}
+
+.rhea-family-tree .scrollable-container.scroll-tree {
+	transition: var(--containerTransition);
+}
+.rhea-family-tree .ft-container,
+.rhea-family-tree .ft-container .family-tree {
+	position: absolute;
+	overflow: visible;
+}
+
+.rhea-family-tree .ft-node {
+	width: var(--charRootNodeSize);
+	height: var(--charRootNodeSize);
+	margin-bottom: var(--charRootNodeBottomSize);
+	cursor: var(--charRootNodeCursor);
+	border-radius: 50%;
+}
+
+.rhea-family-tree .rhea-ft-search {
+	position: absolute;
+	bottom: 2rem;
+	left: 1rem;
+	z-index: 1200;
+}
+
+.rhea-family-tree .rhea-ft-search .rhea-search-input-wrap {
+	display: inline;
+	/* z-index: 1200; */
+	border: 1px solid #ccc;
+	padding: 5px;
+	background-color: white;
+	border-radius: 4px;
+}
+.rhea-family-tree .rhea-ft-search .rhea-search-input-wrap .rhea-ft-search-input {
+	border: none;
+	outline: none;
+	background: transparent;
+}
+.rhea-family-tree .rhea-ft-search .rhea-search-clear {
+	/* position: relative; */
+	/* right: 2rem; */
+	background: transparent;
+	border: none;
+	outline: none;
+	color: #aaa;
+}
+
+.rhea-family-tree .rhea-search-result > .character-portrait,
+.rhea-family-tree .rhea-search-result > .character-data > .character-label {
+	/* border-color: red; */
+	box-shadow: 0px 0px 15px 1px rgba(0,0,0,0.47);
+	box-shadow: var(--search-result-shadow)
+}
+
+.rhea-ft-zoom-controls,
+.rhea-oc-zoom-controls,
+.rhea-bl-zoom-controls {
+	/* display: inline-flex; */
+	display: inline-block;
+	margin-left: 0.5rem;
+	justify-content: space-between;
+	/* width: 6rem; */
+	border: 1px solid #ccc;
+	border-radius: 4px;
+}
+.rhea-ft-zoom-controls>:first-child,
+.rhea-oc-zoom-controls>:first-child,
+.rhea-bl-zoom-controls>:first-child {
+	border-right: 1px solid #ddd;
+	border-top-left-radius: 4px;
+	border-bottom-left-radius: 4px;
+}
+.rhea-ft-zoom-controls>:nth-child(2),
+.rhea-oc-zoom-controls>:nth-child(2),
+.rhea-bl-zoom-controls>:nth-child(2) {
+	border-top-right-radius: 4px;
+	border-bottom-right-radius: 4px;
+}
+
+.rhea-ft-zoom-controls button,
+.rhea-oc-zoom-controls button,
+.rhea-bl-zoom-controls button {
+	background: white;
+	/* border: 1px solid #aaa; */
+	border:none;
+	padding: 4px;
+	transition: all .2s ease-in-out;
+	/* border-radius: 50%; */
+	/* line-height: 1.5rem; */
+	outline: none;
+}
+.rhea-ft-zoom-controls button:hover,
+.rhea-oc-zoom-controls button:hover,
+.rhea-bl-zoom-controls button:hover {
+	background: #ccc;
+}
+
+/* Node Styles */
+
+/* General Styles for all Nodes */
+.rhea-family-tree .rhea-character-node {
+	width: 120px;
+	/* padding: 5px; */
+	/* border: 1px solid black; */
+	display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	justify-content: center;
+	align-items: center;
+	/* margin-left: 50%; */
+	/* position: absolute; */
+	margin-bottom: 5rem;
+}
+
+.rhea-family-tree .rhea-character-node .character-portrait {
+	padding: var(--characterPortraitPadding);
+	border: 1px solid transparent;
+	border-radius: var(--characterPortraitBorderRadius);
+	background: var(--characterPortraitBg);
+	margin-bottom: 0;
+}
+.rhea-family-tree .rhea-character-node .character-portrait:after {
+	position: absolute;
+	content: "";
+	border: var(--characterPortraitOuterBorder);
+	border-radius: var(--characterPortraitBorderRadius);
+	width: 120px; /* Needs to be character node's width - character node's padding *2, minus the border width default 120 - (5 * 2 - 1) */
+	height: 120px; /* Needs to be same calculation as width, but with height instead */
+	padding: var(--characterPortraitPadding);
+	top: 0;
+	left: 0;
+	background: var(--characterPortraitFrameBg);
+	z-index: 10;
+	animation: var(--characterPortraitAnimation);
+}
+.rhea-family-tree .rhea-character-node.character-halfblood .character-portrait:after {
+	background: var(--halfBloodPortraitFrameBg);
+}
+.rhea-family-tree .rhea-character-node .character-portrait img {
+
+	z-index: 75;
+	position: relative;
+	border: var(--characterPortraitInnerBorder);
+	left: 0px;
+}
+
+.rhea-family-tree .rhea-character-node .character-data {
+	margin-top: -1rem;
+	text-align: center;
+	position: relative;
+	z-index: 100;
+}
+
+
+.rhea-family-tree .rhea-character-node .character-data .character-honorific {
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: center;
+
+}
+
+.rhea-family-tree .rhea-character-node .character-data .character-honorific span {
+	border-bottom-left-radius: 5px;
+	border-bottom-right-radius: 5px;
+	background-color: var(--colorDarkCream);
+	/* background-image: url('/modules/familytrees/img/parchment-light_300x169.png'); */
+	border: 1px solid #999;
+	padding: 5px;
+	display: block;
+	max-width: 80%;
+	margin-top: -2px;
+	z-index: -1;
+	font-family: sans-serif;
+	font-size: 0.65em;
+}
+
+
+
+.rhea-family-tree .character-portrait {
+	padding: 8px;
+	background: transparent;
+	width: var(--charRootNodeSize);
+	margin-bottom: 0 !important;
+}
+
+.rhea-family-tree .character-portrait-wrapper {
+	width: 100px;
+	height: 100px;
+	position: relative;
+	top: 4px;
+	left: 4px;
+	overflow: hidden;
+	border-radius: 50%;
+	z-index: 72;
+}
+
+.rhea-family-tree .rhea-character-node .character-portrait img {
+	/* display: inline; */
+	margin: 0 auto;
+	height: auto;
+	width: 100%;
+	border-radius: unset;
+}
+
+
+/* Biological Icon: Shown on characters that are blood-related to the Main Character */
+.rhea-family-tree .rhea-character-node .half-blood:before,
+.rhea-family-tree .rhea-character-node .half-blood:after,
+.rhea-family-tree .rhea-character-node .character-blood:before,
+.rhea-family-tree .rhea-character-node .character-blood:after {
+	font-family: "Font Awesome 5 Duotone";
+	/* content: "\f043"; */
+	position: absolute;
+	
+	right: 10px;
+	color: darkred;
+	font-size: 1.2rem;
+	font-weight: 400;
+	opacity: 0.4;
+	z-index: 1100;
+}
+
+.rhea-family-tree .rhea-character-node .character-blood:before {
+	top: -6px;
+	content: "\f5c7";
+}
+.rhea-family-tree .rhea-character-node .character-blood:after {
+	top: -6px;
+	opacity: 1;
+	content: "\10f5c7";
+}
+.rhea-family-tree .rhea-character-node .half-blood:before {
+	top: 18px;
+	right: 2px;
+	content: "\f042";
+}
+.rhea-family-tree .rhea-character-node .half-blood:after {
+	top: 18px;
+	right: 2px;
+	opacity: 1;
+	content: "\10f042";
+}
+
+/* Button Controls: Used for the "Spouse" Character to allow the user to switch */
+.rhea-family-tree .rhea-character-node .character-switch-btns {
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: space-between;
+	margin-top: -40px;
+	margin-bottom: 10px;
+	color: #fbfbfb;
+}
+
+.rhea-family-tree .rhea-character-node .character-switch-btns .character-btn {
+	width: 24px;
+	height: 24px;
+	display: block;
+	z-index: 1000;
+	text-align: center;
+	line-height: 26px;
+}
+
+/* Animations */
+@keyframes portrait-frame {
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
+}
+
+/* Fix: Set the SVG to not use antialiasing (prevents the issue with some portions of lines appearing darker) */
+.rhea-family-tree svg path,
+.rhea-bloodline svg path{
+	shape-rendering: crispEdges;
+	stroke-width: var(--lineWidth);
+	stroke: var(--lineColor);
+	stroke-opacity: 1; /* Changing this will result in some portions of lines showing darker than others. Advised not to change this. */
+}
+
+/* Debug Element Styles */
+.rhea-family-tree .debug-target {
+	position: absolute;
+	width: 10px;
+	height: 10px;
+	border-radius: 50%;
+	left: calc(50% - 5px);
+	top: calc(50% - 5px);
+
+	opacity: 1;
+	border: 1px solid transparent;
+}
+.rhea-family-tree .target-canvas {
+	background-color: red;
+	border-color: red;
+	z-index: 1000;
+}
+.rhea-family-tree .target-viewport {
+	background-color: transparent;
+	border-color: green;
+	z-index: 1100;
+}
+.rhea-family-tree .debug-axis {
+	position: absolute;
+	background-color: lightgray;
+	z-index: 1200;
+}
+.rhea-family-tree .debug-axis.axis-x {
+	width: 100%;
+	height: 1px;
+}
+.rhea-family-tree .debug-axis.axis-y {
+	height: 100%;
+	width: 1px;
+}
+/* Guides: The X and Y guides are used to show the exact center of the viewport */
+.rhea-family-tree .guide-x {
+	width: calc(50% - 1px);
+	height: 600px;
+	border-right: 1px solid black;
+	z-index: 1000;
+	position: absolute;
+}
+.rhea-family-tree .guide-y {
+	width: 100%;
+	height: 299px;
+	border-bottom: 1px solid black;
+	z-index: 1000;
+	position: absolute;
+}
+/* This guide shows the exact center of the ScrollContainer, used to ensure the viewport is centered on this element. */
+.rhea-family-tree .scroll-guide {
+	position: absolute;
+	width: 10px;
+	height: 10px;
+	background-color: black;
+	border-radius: 50%;
+	left: calc(50% - 5px);
+	top: calc(50% - 5px);
+	z-index: 1000;
+	opacity: 1
+}
+
+
+/* Main Character Node */
+.rhea-family-tree .main-character {
+	width: var(--mainCharWidth);
+}
+.rhea-family-tree .main-character .character-portrait {
+	background: var(--mainCharPortraitBg);
+}
+.rhea-family-tree .main-character .character-portrait:after {
+	border: var(--mainCharPortraitOuterBorder);
+	width: calc(var(--mainCharWidth));
+	height: calc(var(--mainCharWidth));
+	padding: var(--mainCharPortraitPadding);
+	background: var(--mainCharPortraitFrameBg);
+	animation: var(--mainCharPortraitAnimation);
+}
+
+/* Main Character's Spouse Node */
+.rhea-family-tree .character-spouse {
+	width: var(--mainCharSpouseWidth);
+}
+.rhea-family-tree .character-spouse .character-portrait {
+	background: var(--mainCharSpousePortraitBg);
+}
+.rhea-family-tree .character-spouse .character-portrait:after {
+	border: var(--mainCharSpousePortraitOuterBorder);
+	width: calc(var(--mainCharSpouseWidth));
+	height: calc(var(--mainCharSpouseWidth));
+	padding: var(--mainCharSpousePortraitPadding);
+	background: var(--mainCharSpousePortraitFrameBg);
+	animation: var(--mainCharSpousePortraitAnimation);
+}
+
+/* Main Character's Children Nodes */
+.rhea-family-tree .character-child {
+	width: var(--mainCharChildWidth);
+}
+.rhea-family-tree .character-child .character-portrait {
+	background: var(--mainCharChildPortraitBg);
+}
+.rhea-family-tree .character-child .character-portrait:after {
+	border: var(--mainCharChildPortraitOuterBorder);
+	width: calc(var(--mainCharChildWidth));
+	height: calc(var(--mainCharChildWidth));
+	padding: var(--mainCharChildPortraitPadding);
+	background: var(--mainCharChildPortraitFrameBg);
+	animation: var(--mainCharChildPortraitAnimation);
+}
+
+/* Main Character's Grandchildren Nodes */
+.rhea-family-tree .character-grandchild {
+	width: var(--mainCharGrandchildWidth);
+}
+.rhea-family-tree .character-grandchild .character-portrait {
+	background: var(--mainCharGrandchildPortraitBg);
+}
+.rhea-family-tree .character-grandchild .character-portrait:after {
+	border: var(--mainCharGrandchildPortraitOuterBorder);
+	width: calc(var(--mainCharGrandchildWidth));
+	height: calc(var(--mainCharGrandchildWidth));
+	padding: var(--mainCharChildPortraitPadding);
+	background: var(--mainCharGrandchildPortraitFrameBg);
+	animation: var(--mainCharGrandchildPortraitAnimation);
+}
+
+/* Main Character's Parent Nodes */
+.rhea-family-tree .character-parent {
+	width: var(--mainCharParentWidth);
+}
+.rhea-family-tree .character-parent .character-portrait {
+	background: var(--mainCharParentPortraitBg);
+}
+.rhea-family-tree .character-parent .character-portrait:after {
+	border: var(--mainCharParentPortraitOuterBorder);
+	width: calc(var(--mainCharParentWidth));
+	height: calc(var(--mainCharParentWidth));
+	padding: var(--mainCharParentPortraitPadding);
+	background: var(--mainCharParentPortraitFrameBg);
+	animation: var(--mainCharParentPortraitAnimation);
+}
+
+/* Main Character's Grandparent Nodes */
+.rhea-family-tree .character-grandparent {
+	width: var(--mainCharGrandparentWidth);
+}
+.rhea-family-tree .character-grandparent .character-portrait {
+	background: var(--mainCharGrandparentPortraitBg);
+}
+.rhea-family-tree .character-grandparent .character-portrait:after {
+	border: var(--mainCharGrandparentPortraitOuterBorder);
+	width: calc(var(--mainCharGrandparentWidth));
+	height: calc(var(--mainCharGrandparentWidth));
+	padding: var(--mainCharGrandparentPortraitPadding);
+	background: var(--mainCharGrandparentPortraitFrameBg);
+	animation: var(--mainCharGrandparentPortraitAnimation);
+}
+
+/* Main Character's Greatgrandparent Nodes */
+.rhea-family-tree .character-greatgrandparent {
+	width: var(--mainCharGreatgrandparentWidth);
+}
+.rhea-family-tree .character-greatgrandparent .character-portrait {
+	background: var(--mainCharGreatgrandparentPortraitBg);
+}
+.rhea-family-tree .character-greatgrandparent .character-portrait:after {
+	border: var(--mainCharGreatgrandparentPortraitOuterBorder);
+	width: calc(var(--mainCharGreatgrandparentWidth));
+	height: calc(var(--mainCharGreatgrandparentWidth));
+	padding: var(--mainCharGreatgrandparentPortraitPadding);
+	background: var(--mainCharGreatgrandparentPortraitFrameBg);
+	animation: var(--mainCharGreatgrandparentPortraitAnimation);
+}
+
+.rhea-family-tree .rhea-character-node .character-label {
+	background: var(--characterLabelBg);
+	color: #483e09;
+	padding: var(--characterNamePadding);
+	display: block;
+	border: var(--characterNameBorder);
+	z-index: 200;
+	font-family: sans-serif;
+	font-size: 0.8em;
+}
+
+.rhea-family-tree .rhea-character-node .character-label .character-title {
+	font-size: var(--characterHonorificSize);
+	display: block;
+	line-height: var(--characterHonorificLineHeight);
+	color: var(--characterHonorificColor);
+	font-family: var(--characterHonorificFont);
+}
+
+.rhea-family-tree .rhea-character-node .character-label .character-name {
+	display: block;
+	line-height: var(--characterNameLineHeight);
+	margin-top: 4px;
+	margin-bottom: 4px;
+	text-decoration: none;
+	font-size: var(--characterNameSize);
+	color: var(--characterNameColor);
+	font-family: var(--characterNameFont);
+}
+
+.rhea-family-tree .rhea-character-node .character-label .character-life {
+	font-size: var(--characterDatesSize);
+	display: block;
+	line-height: var(--characterDatesLineHeight);
+	color: var(--characterDatesColor);
+	font-family: var(--characterDatesColor);
+}
+
+.rhea-family-tree .rhea-character-node .character-relationship {
+	z-index: -1;
+	position: relative;
+	top: -30px;
+	padding: 5px 10px;
+
+	font-size: var(--characterRelationshipCardSize);
+	background: var(--characterRelationshipCardBg);
+	color: var(--characterRelationshipCardColor);
+	transition: top .3s ease-in-out;
+}
+
+.rhea-family-tree .rhea-character-node:hover .character-relationship {
+	top: -2px;
+}
+
+/* Bloodlines */
+
+/* Variables */
+.rhea-bloodline {
+	/* Colors */
+	--colorRed: #D5382A;
+	--colorDarkRed: #5C3A31;
+	--colorRedBrown: #46271E;
+	--colorBrown: #674534;
+	--colorYellow: #AF945C;
+	--colorCream: #FAF7EA;
+	--colorDarkCream: #EFE6D4;
+	--colorDarkBrown: #483e09;
+	--colorMaroon: #80002B;
+
+	/* rootNodeHeight sets the default height for the family tree viewport/rootNode */
+	--rootNodeHeight: 650px;
+	--rootNodeBg: #ffffff24; /* This sets the static background (does NOT scroll with trees). Can be a color or image. */
+	--rootNodeBorder: 2px solid #a296374f;; /* This sets the border of the viewport, if desired. */
+
+	/* Loader: This is the element that shows when trees are being rendered */
+	--loaderBgColor: #a296374f;
+	--loaderBorder: 1px solid #ccc;
+	--loaderFont: 'PT Sans', sans-serif;
+	--loaderTransition: all .8s ease-in-out;
+
+	/* ScrollableContainer: This is the element that pans. To set a background for the family tree layout, it is NOT advised to add it here, but to make this transparent and set the var --familyTreeBg instead. */
+	--minimumContainerSize: 3000px; /* The element should be square, and should be larger than the tree display and viewport dimensions */
+	--containerBg: transparent; /* Used for demo purposes. If using a static color or image for the background of the rendered tree, set this to transparent. If an image is used, this image WILL move as the container is panned. */
+	--containerCursor: grab; /* The cursor icon to display to indicate the container can be panned. */
+	--containerTransition: all .3s ease-in-out; /* This is ONLY valid when search results result in the tree moving. */
+
+	/* FT Node: This is the node that contains the character display nodes */
+	--charRootNodeCursor: pointer; /* This sets the cursor icon to indicate the character is "clickable" */
+	--charRootNodeSize: 120px; /* This sets the size of the characterNodes'. This should be square (same width and height) */
+	--charRootNodeBottomSize: 5rem; /* This sets a margin under the characterRootNode (for sizing and positioning calculations). Advised to leave as-is. */
+
+	/* Relationship Lines: These are the lines drawn from character to character to depict relaitionships */
+	--lineWidth: 2px;
+	--lineColor: black;
+
+	/* Character Nodes: These are the elements that actually display the character's data */
+	--characterPortraitPadding: 5px;
+	--characterPortraitOuterBorder: 1px solid #777; /* This is the border around the outside of the portrait frame */
+	--characterPortraitInnerBorder: 1px solid #777; /* This is the border around the image itself */
+	--characterPortraitFrameBg: linear-gradient(90deg, rgba(87,87,88,1) 0%, rgba(213,213,213,1) 18%, rgba(94,94,94,1) 35%, rgba(213,213,213,1) 65%, rgba(87,87,88,1) 100%); /* This is the color of the portrait frame */
+	--characterPortraitAnimation: portrait-frame 200s infinite; /* This animates the portrait frame. By default, it slowly rotates */
+	--characterPortraitBg: transparent; /* This is the color behind the portrait image. Not visible if image is set to full-width (default) */
+	--characterPortraitWidth: 100%; /* Sets the size of the image. By default, set to 100% so that it fills the portrait frame */
+	--characterPortraitBorderRadius: 50%; /* Defines the shape of the portrait. 50% = circle, 0px = rectangle/square */
+
+	--characterNamePadding: 6px; /* The padding of the character's name text container */
+	--characterNameBg: #aaa; /* The background of the character's name text container */
+	--characterNameBorder: 1px solid #999; /* The border around the character's name */
+	--characterNameBorderRadius: 5px; /* The curvature of the "corners" of the character's name */
+
+	--characterLabelBg: var(--colorCream); /* This is the background of the character node's text. Can be a color or image. */
+	--characterHonorificSize: 0.8em; /* This sets the font-size for the title/honorific */
+	--characterHonorificLineHeight: 0.9em; /* Setting this line-height adjusts the amount of space the specific label takes up vertically */
+	--characterHonorificFont: sans-serif; /* The font-family to use for the honorific */
+	--characterHonorificColor: var(--colorDarkBrown); /* The color of the title/honorific */
+
+	--characterNameSize: 1em; /* This sets the font-size for the name */
+	--characterNameLineHeight: 1.1em; /* Setting this line-height adjusts the amount of space the specific label takes up vertically */
+	--characterNameFont: sans-serif; /* The font-family to use for the name */
+	--characterNameColor: var(--colorMaroon); /* The color of the character's name (Note, this is a hyperlink) */
+
+	--characterDatesSize: 0.8em; /* This sets the font-size for the dates */
+	--characterDatesLineHeight: 0.9em; /* Setting this line-height adjusts the amount of space the specific label takes up vertically */
+	--characterDatesFont: sans-serif; /* The font-family to use for the dates */
+	--characterDatesColor: var(--colorDarkBrown); /* The color of the character's lifespan dates */
+
+	/* Main Character Node */
+	--mainCharWidth: 120px; /* This overrides the default character node width */
+	--mainCharPortraitPadding: 7px; /* Overrides the normal padding width for the portrait */
+	--mainCharPortraitBg: transparent; /* Overrides the default portrait background. Advised to leave transparent */
+	--mainCharPortraitOuterBorder: 1px solid #777; /* Overrides the main border around the portait frame */
+	--mainCharPortraitFrameBg: linear-gradient(90deg, rgb(197, 176, 38) 0%, rgb(222, 197, 15) 18%, rgba(244,243,220,1) 35%, rgb(228, 197, 10) 65%, rgb(236, 194, 100) 100%);
+	/*--mainCharPortraitFrameBg: linear-gradient(90deg, rgba(195,196,139,1) 0%, rgba(138,135,7,1) 18%, rgba(244,243,220,1) 35%, rgba(138,135,7,1) 65%, rgba(195,196,139,1) 100%); !* This is the color for the portrait frame *!*/
+	--mainCharPortraitAnimation: portrait-frame 200s infinite; /* Overrides the default animation for the portrait frame */
+}
+
+.rhea-bloodline {
+	width: 100%;
+	height: var(--rootNodeHeight);
+	position: relative;
+	overflow: hidden;
+	border: var(--rootNodeBorder);
+	border-radius: 4px;
+	background: var(--rootNodeBg);
+}
+
+.rhea-bloodline .loader {
+	/* z-index: -1; */
+	/* opacity: 0; */
+	position: absolute;
+	background-color: var(--loaderBgColor);
+	border: var(--loaderBorder);
+	width: 100%;
+	height: 100%;
+	/* display: flex; */
+	display: none;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	justify-content: center;
+	align-items: center;
+	transition: var(--loaderTransition);
+	font-family: var(--loaderFont);
+	font-weight: 800;
+	background: #f5f5f5d4;
+	font-size: 1.8em;
+	color: #444;
+	text-shadow:
+			1px 0px 1px #ccc, 0px 1px 1px #eee,
+			2px 1px 1px #ccc, 1px 2px 1px #eee,
+			3px 2px 1px #ccc, 2px 3px 1px #eee,
+			4px 3px 1px #ccc, 3px 4px 1px #eee,
+			5px 4px 1px #ccc, 4px 5px 1px #eee,
+			6px 5px 1px #ccc, 5px 6px 1px #eee,
+			7px 6px 1px #ccc;
+
+}
+
+.rhea-bloodline.loading .loader {
+	display: flex;
+	z-index: 1000;
+	opacity: 1;
+}
+
+.rhea-bloodline .rhea-bloodline-search {
+	position: absolute;
+	bottom: 2rem;
+	left: 1rem;
+	z-index: 3000;
+}
+
+.rhea-bloodline .scrollable-container {
+	min-width: var(--minimumContainerSize);
+	min-height: var(--minimumContainerSize);
+	position: absolute;
+	background: var(--containerBg);
+	opacity: 1;
+	cursor: var(--containerCursor);
+}
+
+.rhea-bloodline .scrollable-container.scrolling {
+	transition: var(--containerTransition);
+}
+
+.rhea-bloodline .bl-container {
+	position: absolute;
+	overflow: visible;
+}
+
+.rhea-bloodline .bl-node {
+	width: var(--charRootNodeSize);
+	height: var(--charRootNodeSize);
+	margin-bottom: var(--charRootNodeBottomSize);
+	cursor: var(--charRootNodeCursor);
+	border-radius: 50%;
+}
+
+/* General Styles for all Nodes */
+.rhea-bloodline .rhea-character-node {
+	width: 120px;
+	display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	justify-content: center;
+	align-items: center;
+	margin-bottom: 5rem;
+}
+
+.rhea-bloodline .rhea-character-node .character-portrait {
+	padding: var(--characterPortraitPadding);
+	border: 1px solid transparent;
+	border-radius: var(--characterPortraitBorderRadius);
+	background: var(--characterPortraitBg);
+	margin-bottom: 0;
+}
+.rhea-bloodline .rhea-character-node .character-portrait:after {
+	position: absolute;
+	content: "";
+	border: var(--characterPortraitOuterBorder);
+	border-radius: var(--characterPortraitBorderRadius);
+	width: 120px; /* Needs to be character node's width - character node's padding *2, minus the border width default 120 - (5 * 2 - 1) */
+	height: 120px; /* Needs to be same calculation as width, but with height instead */
+	padding: var(--characterPortraitPadding);
+	top: 0;
+	left: 0;
+	background: var(--characterPortraitFrameBg);
+	z-index: 10;
+	animation: var(--characterPortraitAnimation);
+}
+
+.rhea-bloodline .main-character .rhea-character-node .character-portrait:after {
+	border: var(--mainCharPortraitOuterBorder);
+	width: calc(var(--mainCharWidth));
+	height: calc(var(--mainCharWidth));
+	padding: var(--mainCharPortraitPadding);
+	background: var(--mainCharPortraitFrameBg);
+	animation: var(--mainCharPortraitAnimation);
+}
+
+.rhea-bloodline .rhea-character-node .character-portrait img {
+
+	z-index: 75;
+	position: relative;
+	border: var(--characterPortraitInnerBorder);
+	left: 0px;
+	margin: 0 auto;
+	height: auto;
+	width: 100%;
+	border-radius: unset;
+}
+
+.rhea-bloodline .rhea-character-node .character-data {
+	margin-top: -1rem;
+	text-align: center;
+	position: relative;
+	z-index: 100;
+}
+
+
+.rhea-bloodline .rhea-character-node .character-data .character-honorific {
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: center;
+
+}
+
+.rhea-bloodline .rhea-character-node .character-data .character-honorific span {
+	border-bottom-left-radius: 5px;
+	border-bottom-right-radius: 5px;
+	background-color: var(--colorDarkCream);
+	/* background-image: url('/modules/familytrees/img/parchment-light_300x169.png'); */
+	border: 1px solid #999;
+	padding: 5px;
+	display: block;
+	max-width: 80%;
+	margin-top: -2px;
+	z-index: -1;
+	font-family: sans-serif;
+	font-size: 0.65em;
+}
+
+
+
+.rhea-bloodline .character-portrait {
+	padding: 8px;
+	background: transparent;
+	width: var(--charRootNodeSize);
+	margin-bottom: 0 !important;
+}
+
+.rhea-bloodline .character-portrait-wrapper {
+	width: 100px;
+	height: 100px;
+	position: relative;
+	top: 4px;
+	left: 4px;
+	overflow: hidden;
+	border-radius: 50%;
+	z-index: 72;
+}
+
+.rhea-bloodline .rhea-character-node .character-label {
+	background: var(--characterLabelBg);
+	color: #483e09;
+	padding: var(--characterNamePadding);
+	display: block;
+	border: var(--characterNameBorder);
+	z-index: 200;
+	font-family: sans-serif;
+	font-size: 0.8em;
+}
+
+.rhea-bloodline .rhea-character-node .character-label .character-title {
+	font-size: var(--characterHonorificSize);
+	display: block;
+	line-height: var(--characterHonorificLineHeight);
+	color: var(--characterHonorificColor);
+	font-family: var(--characterHonorificFont);
+}
+
+.rhea-bloodline .rhea-character-node .character-label .character-name {
+	display: block;
+	line-height: var(--characterNameLineHeight);
+	margin-top: 4px;
+	margin-bottom: 4px;
+	text-decoration: none;
+	font-size: var(--characterNameSize);
+	color: var(--characterNameColor);
+	font-family: var(--characterNameFont);
+}
+
+.rhea-bloodline .rhea-character-node .character-label .character-life {
+	font-size: var(--characterDatesSize);
+	display: block;
+	line-height: var(--characterDatesLineHeight);
+	color: var(--characterDatesColor);
+	font-family: var(--characterDatesColor);
+}
+
+/* This guide shows the exact center of the ScrollContainer, used to ensure the viewport is centered on this element. */
+.rhea-bloodline .debug-target {
+	position: absolute;
+	width: 10px;
+	height: 10px;
+	background-color: black;
+	border-radius: 50%;
+	left: calc(50% - 5px);
+	top: calc(50% - 5px);
+	z-index: 1000;
+	opacity: 1
+}
+/*
+_____  _                   ____             _____ _                _       
+|  __ \| |                 / __ \           / ____| |              | |      
+| |__) | |__   ___  __ _  | |  | |_ __ __ _| |    | |__   __ _ _ __| |_ ___ 
+|  _  /| '_ \ / _ \/ _` | | |  | | '__/ _` | |    | '_ \ / _` | '__| __/ __|
+| | \ \| | | |  __/ (_| | | |__| | | | (_| | |____| | | | (_| | |  | |_\__ \
+|_|  \_\_| |_|\___|\__,_|  \____/|_|  \__, |\_____|_| |_|\__,_|_|   \__|___/
+                                       __/ |                                
+									  |___/                                 */
+.rhea-org-chart {
+	/* Colors */
+	--colorRed: #D5382A;
+	--colorDarkRed: #5C3A31;
+	--colorRedBrown: #46271E;
+	--colorBrown: #674534;
+	--colorYellow: #AF945C;
+	--colorCream: #FAF7EA;
+	--colorDarkCream: #EFE6D4;
+	--colorDarkBrown: #483e09;
+	--colorMaroon: #80002B;
+
+	/* rootNodeHeight sets the default height for the family tree viewport/rootNode */
+	--viewportHeight: 650px;
+	--viewportBg: #ffffff24; /* This sets the static background (does NOT scroll with trees). Can be a color or image. */
+	--viewportBorder: 2px solid #a296374f;; /* This sets the border of the viewport, if desired. */
+
+	/* Canvas */
+	--canvasSize: 3000px;
+	--canvasBg: transparent;
+	--canvasCursor: grab;
+	--canvasDraggingCursor: grabbing;
+
+	/* Slashscreen / Loader */
+	--splashTransition:all .8s ease-out;
+	--splashFont:'PT Sans', sans-serif;
+
+	/* Nodes */
+	--nodeWidth: 330px;
+	--nodeHeight: 180px;
+	--nodeBg: #333;
+}
+
+.rhea-org-chart {
+	width: 100%;
+	height: var(--viewportHeight);
+	position: relative;
+	overflow: hidden;
+	border: var(--viewportBorder);
+	border-radius: 4px;
+	background: var(--viewportBg);
+}
+
+.rhea-canvas {
+	min-width: var(--canvasSize);
+	min-height: var(--canvasSize);
+	position: absolute;
+	background: var(--canvasBg);
+	opacity: 1;
+	cursor: var(--canvasCursor);
+}
+.rhea-canvas.panning {
+	transition: all .3s ease-in-out;
+}
+.rhea-canvas.ui-draggable-dragging {
+	cursor: var(--canvasDraggingCursor);
+}
+.rhea-loader-splash {
+	position: absolute;
+	top: 0;
+	left: 0;
+	background: var(--splashscreenBg);
+	border: var(--splashscreenBorder);
+	width: 100%;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	justify-content: center;
+	align-items: center;
+	transition: var(--splashTransition);
+	font-family: var(--splashFont);
+	font-weight: 800;
+	background: #f5f5f5d4;
+	font-size: 1.8em;
+	color: #444;
+	z-index: -1;
+	opacity: 0;
+	text-shadow:
+			1px 0px 1px #ccc, 0px 1px 1px #eee,
+			2px 1px 1px #ccc, 1px 2px 1px #eee,
+			3px 2px 1px #ccc, 2px 3px 1px #eee,
+			4px 3px 1px #ccc, 3px 4px 1px #eee,
+			5px 4px 1px #ccc, 4px 5px 1px #eee,
+			6px 5px 1px #ccc, 5px 6px 1px #eee,
+			7px 6px 1px #ccc;
+}
+
+.rhea-org-chart.loading .rhea-loader-splash {
+	z-index: 1500;
+	opacity: 1;
+}
+
+.rhea-org-chart .rhea-oc-title-wrapper {
+	position: absolute;
+	top: 0;
+	width: 100%;
+	text-align: center;
+	z-index: 200;
+}
+.rhea-org-chart .rhea-oc-title-wrapper .rhea-oc-title {
+	display: inline-block;
+	padding: 0px 10px;
+	border-bottom: 1px solid black;
+}
+.rhea-org-chart .rhea-oc-title-wrapper .rhea-oc-title .rhea-oc-title-text {
+	border: none;
+}
+
+/* Container and Nodes */
+.rhea-org-chart .rhea-oc-tree {
+	position: absolute;
+	overflow: visible;
+}
+.rhea-org-chart .rhea-oc-node {
+	width: var(--nodeWidth);
+	height: var(--nodeHeight);
+	display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	justify-content: center;
+	align-items: center;
+	overflow: hidden;
+	cursor: default;
+	background: var(--nodeBg);
+	/* overflow: visible; */
+}
+.rhea-org-chart .oc-node > a.collapse-switch {
+	/* z-index: 1; */
+	visibility: hidden;
+}
+.rhea-org-chart .oc-node > a.collapse-switch:after {
+	font-family: 'Font Awesome 5 Pro';
+	color: #fff;
+	content: "\f146";
+	width: 16px;
+	height: 16px;
+	font-size: 18px;
+	line-height: 16px;
+	padding: 0px;
+	position: absolute;
+	top: 5px;
+	right: 5px;
+	display:none;
+	z-index: 150 !important;
+	background: rgba(0,0,0,0.2);
+	cursor: pointer;
+	visibility: visible;
+}
+.rhea-org-chart .oc-node:hover > a.collapse-switch:after {
+	display: block;
+	z-index: 150;
+}
+.rhea-org-chart .oc-node.collapsed > a.collapse-switch:after {
+	content: "\f0fe";
+	display: block;
+}
+.rhea-org-chart .rhea-oc-node .rhea-ocnode-cover {
+	padding: 5px;
+	border: 1px solid transparent;
+	background: #333;
+	z-index: 75;
+}
+.rhea-org-chart .rhea-oc-node .rhea-ocnode-cover img {
+	position: relative;
+	width: 100%;
+}
+
+.rhea-org-chart .rhea-oc-node .rhea-ocnode-description {
+	--textHeight: calc(var(--nodeHeight) / 3);
+	position: absolute;
+	top: calc(var(--nodeHeight) - var(--textHeight));
+	height: var(--textHeight);
+	width: var(--nodeWidth);
+	z-index: 120;
+	background:rgba(0,0,0,0.4);
+	padding: 5px 10px;
+	transition: all .3s ease-in-out;
+	text-align: center;
+	color: #ddd;
+	
+}
+
+.rhea-org-chart .rhea-oc-node .rhea-ocnode-description .rhea-ocnode-text-wrap {
+	display: block;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+}	
+
+.rhea-org-chart .rhea-oc-node:hover .rhea-ocnode-description {
+	top: 0;
+	height: var(--nodeHeight);
+	background: rgba(0,0,0,0.6);
+	padding-top: 22px;
+	cursor: pointer;
+	
+}
+.rhea-org-chart .rhea-oc-node:hover .rhea-ocnode-description .rhea-ocnode-text-wrap {
+	white-space: normal;
+}
+.rhea-org-chart .rhea-oc-node .rhea-ocnode-description .rhea-ocnode-title {
+	font-size: 16px;
+	color: #fff;
+	margin-bottom: 0px;
+}
+/* Debug Element Styles */
+.rhea-org-chart .debug-target {
+	position: absolute;
+	width: 10px;
+	height: 10px;
+	border-radius: 50%;
+	left: calc(50% - 5px);
+	top: calc(50% - 5px);
+
+	opacity: 1;
+	border: 1px solid transparent;
+}
+.rhea-org-chart .target-canvas {
+	background-color: red;
+	border-color: red;
+	z-index: 1000;
+}
+.rhea-org-chart .target-viewport {
+	background-color: transparent;
+	border-color: green;
+	z-index: 1100;
+}
+.rhea-org-chart .debug-axis {
+	position: absolute;
+	background-color: lightgray;
+	z-index: 1200;
+}
+.rhea-org-chart .debug-axis.axis-x {
+	width: 100%;
+	height: 1px;
+}
+.rhea-org-chart .debug-axis.axis-y {
+	height: 100%;
+	width: 1px;
+}
+
+/* Search & Zoom */
+.rhea-oc-search {
+	position: absolute;
+	bottom: 1rem;
+	left: 1rem;
+	z-index: 1000;
+}
+.rhea-oc-search .rhea-oc-search-wrapper {
+	border: 1px solid #ccc;
+	padding: 0px 10px 0px 5px;
+	border-radius: 2px;
+	background: #fff;
+	display: inline-block;
+}
+.rhea-oc-search .rhea-oc-search-wrapper #rhea-oc-search-input {
+	background: transparent;
+	outline: none;
+	border: none;
+}
+.rhea-oc-search .rhea-oc-search-wrapper .clearSearch {
+	color: #aaa;
+	cursor: pointer;
+}
+.rhea-oc-search .rhea-oc-search-wrapper .clearSearch:hover {
+	color: #999;
+}

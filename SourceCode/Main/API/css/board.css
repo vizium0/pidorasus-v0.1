@@ -1,0 +1,33 @@
+.discussion-board-child {
+    margin-left: 10px;
+    margin-bottom: 20px;
+    border-bottom: 1px #c9c9c9 solid;;
+    padding-bottom: 10px;
+
+}
+
+.discussion-board-child  h4 {
+    margin-bottom: 2px;
+}
+
+div.discussion-board-post-dice-roll {
+    background: #e9f3ff;
+    color: #0f2c4e;
+}
+
+div.discussion-board-post-instructions
+{
+    background: #cff4fc;
+    color: #055160;
+    font-weight: bold;
+}
+
+div.discussion-board-post-ooc {
+    background: #e2e3e5;
+    color: #41464b;
+}
+
+.discussion-board-thread-pinned {
+    background: #f1f1f1;
+    padding: 10px;
+}

@@ -1,0 +1,2243 @@
+
+/* ==========================================================================
+   #DISCLAIMER
+   ============================================================[WETJ11.19] */
+
+/*  
+*   Theme designed by: TJ Trewin
+*   https://www.worldanvil.com/author/tjtrewin
+*
+*/
+
+/* ==========================================================================
+   #FONTS
+   ============================================================[WETJ11.19] */
+
+@font-face {
+  font-family: Mirza;
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(../fonts/co3ImWlikiN5EtraIsY.woff2);
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+
+@font-face {
+  font-family: Simonetta;
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(../fonts/x3dickHVYrCU5BU15c4xe_oD.woff2);
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+
+@font-face {
+  font-family: Averia Serif Libre;
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(../fonts/neIVzD2ms4wxr6GvjeD0X88SHPyX2xYGGS6axq0r.woff2);
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: Alegreya;
+  font-style: italic;
+  font-weight: 700;
+  font-display: swap;
+  src: url(../fonts/4UaErEBBsBhlBjvfkSLk_xHM8pxULg.woff2);
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: Lora;
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url(../fonts/0QIhMX1D_JOuMw_LIftL.woff2);
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: Lora;
+  font-style: italic;
+  font-weight: 700;
+  font-display: swap;
+  src: url(../fonts/0QIiMX1D_JOuMw_Dmt5emNGr.woff2);
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/* ==========================================================================
+   #VARIABLES
+   ============================================================[WETJ11.19] */
+
+.user-css, 
+.user-css-extended, 
+.user-css-presentation,
+.user-css-map-sidebar,
+.page, 
+.map-context-user, 
+.user-css-map,
+.tooltipster-content{
+    
+    /* Fonts */
+    --f1: Mirza;
+    --f2: Averia Serif Libre;
+    --f3: Simonetta;
+    --f4: Alegreya;
+    --f5: Open Sans;
+    --f6: Lora;
+    --f7: Lora;
+
+    /* Colours */
+    --ember-black: #000000;
+    --ember-dark-d: #201e1f;
+    --ember-dark: #454344;
+    --ember-dark-l: #737071;
+    --ember-primary-l: #609cbf;
+    --ember-primary: #377aa1;
+    --ember-primary-d: #265b80;
+    --ember-success-d: #467027;
+    --ember-success: #65a243;
+    --ember-success-l: #9acb73;
+    --ember-warning-l: #f2f292;
+    --ember-warning: #dfba4f;
+    --ember-warning-d: #d97a36;
+    --ember-danger-l: #f45232;
+    --ember-danger: #b33215;
+    --ember-danger-d: #850f09;
+    --ember-secondary-d: rgba(0, 0, 0, 0.5);
+    --ember-secondary: rgba(255, 255, 255, 0.15);
+    --ember-secondary-l: rgba(255, 255, 255, 0.3);
+    --ember-light-d: #cccccc;
+    --ember-light: #e3e3e3;
+    --ember-light-l: #ffffff;
+    --ember-white: #ffffff;
+    --ember-info-l: #e5a1da;
+    --ember-info: #bf60a0;
+    --ember-info-d: #81406a;
+
+}
+
+/* ==========================================================================
+   #BODY
+   ============================================================[WETJ11.19] */
+
+.user-css-presentation{
+    background: url(../images/b563a37982273ecc624f339be17d7bef.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: top;
+    background-size: cover;
+    background-color: var(--ember-black);
+    color: var(--ember-light-d);
+}
+
+.user-css-presentation .page {
+    background: var(--ember-dark-d);
+    box-shadow: 1px 1px 80px 5px var(--ember-black);
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+.user-css-extended .page {
+    box-shadow: 1px 1px 30px 5px var(--ember-black);
+}
+
+.user-css .article-content {
+    padding: 30px;
+    margin-top: 20px;
+}
+
+/* ==========================================================================
+   #HEADINGS
+   ============================================================[WETJ11.19] */
+
+.user-css h1,
+.user-css-extended h1,
+.user-css-map-sidebar h1{
+    font-family: var(--f1);
+    font-size: 45px;
+    padding-bottom: 5px;
+    color: var(--ember-light-l);
+}
+
+.user-css h2,
+.user-css-extended h2,
+.user-css-map-sidebar h2 {
+    font-family: var(--f1);
+    font-variant: small-caps!important;
+    text-transform: capitalize;
+    font-size: 38px;
+    border-bottom: none;
+    color: var(--ember-danger-l);
+}
+
+.user-css h3,
+.user-css-extended h3,
+.user-css-map-sidebar h3{
+    font-family: var(--f3);
+    text-transform: capitalize;
+    font-size: 30px;
+    padding-bottom: 5px;
+    color: var(--ember-danger-l);
+}
+
+.user-css h4,
+.user-css-extended h4,
+.user-css-map-sidebar h4 {
+    font-family: var(--f1);
+    text-transform: capitalize;
+    font-size: 26px;
+    padding-bottom: 5px;
+    color: var(--ember-warning-d);
+}
+
+.user-css h5,
+.user-css-extended h5,
+.user-css-map-sidebar h5 {
+    font-family: var(--f5);
+    text-transform: capitalize;
+    font-size: 20px;
+    padding-bottom: 5px;
+    color: var(--ember-warning-d);
+}
+
+.user-css-presentation .article-content,
+.user-css p {
+    font-family: var(--f5);
+    font-size: 16px;
+    line-height: 1.5;
+    padding-bottom: 5px;
+    padding-top: 5px;
+    color: var(--ember-light-d);
+}
+
+.user-css b {
+    font-weight: 700;
+}
+
+.user-css small {
+    font-family: var(--f2);
+    font-variant: small-caps!important;
+    text-transform: capitalize;
+    font-size: 12px;
+}
+
+.user-css .dropcap {
+    font-family: var(--f1);
+    color: var(--ember-danger);
+}
+
+/* ==========================================================================
+   #WORLD VIGNETTE
+   ============================================================[WETJ11.19] */
+
+.user-css .heading .subheading {
+    font-size: 14px;
+    font-family: var(--f5);
+    color: var(--ember-light-d);
+    line-height: 1.7;
+    margin-left: 15px;
+    margin-right: 15px;
+    padding-top: 15px;
+}
+
+/* ==========================================================================
+   #TABLE OF CONTENTS
+   ============================================================[WETJ11.19] */
+
+.user-css .table-of-contents h2,
+.user-css .world-featured-articles h2,
+.user-css .world-recent-articles h2,
+.user-css .world-maps-list h2,
+.user-css div#world-maps h2,
+.user-css .world-social-media h2 {
+    color: var(--ember-danger-l)!important;
+    padding-bottom: 0px;
+    border-bottom: 2px dotted var(--ember-secondary);
+    font-size: 28px;
+    letter-spacing: 0.64px;
+    font-family: var(--f2);
+    font-weight: 900;
+}
+
+.user-css .open-category-page {
+    display: none;
+}
+
+.user-css .world-content {
+    padding: 0px 15px 0px 15px;
+    box-shadow: none!important;
+}
+
+.user-css .world-featured-articles h2 {
+    margin-bottom: 20px;
+}
+
+.user-css .table-of-contents h5,
+.user-css .table-of-contents h5 a {
+    font-size: 22px;
+    font-family: var(--f1);
+}
+
+.user-css .table-of-contents h5 a:hover {
+    color: var(--ember-danger-l)!important;
+}
+
+
+.user-css .table-of-contents .world-menu-subcategory .world-category-link {
+    font-family: var(--f2);
+    font-size: 18px;
+    color: var(--ember-warning);
+}
+
+
+.user-css ul.category-list li a:last-child {
+    color: var(--ember-light-d);
+    line-height: 2;
+    vertical-align: -6%;
+}
+
+.user-css .followers-counter .panel-default {
+    background: var(--ember-danger-d);
+    border-radius: 10px;
+    box-shadow: none;
+    width: auto;
+}
+
+.user-css .followers-counter .header-title {
+    font-family: var(--f5)!important;
+    color: var(--ember-light)!important;
+    font-size: 16px;
+    padding-bottom: 0px;
+    font-weight: normal;
+    text-transform: revert;
+    text-shadow: none;
+}
+
+.user-css .followers-counter .header-title a {
+    color: var(--ember-warning-l);
+}
+
+.user-css .followers-counter.m-b-20 {
+    margin-bottom: 0px!important;
+}
+
+.user-css .category-list li:first-of-type{
+    padding-top: 5px!important;
+}
+
+.user-css .category-list li {
+    padding: 0px 10px 0px 10px!important;
+}
+
+.user-css .category-list .fa-folder::before {
+    color: var(--ember-light-d);
+}
+
+.user-css .category-list .fa-file::before {
+    color: var(--ember-light-d);
+}
+
+.user-css .category-list .fa-hourglass::before {
+    color: var(--ember-light-d);
+}
+
+.user-css div#world-category-content {
+    display: none;
+}
+
+.user-css .category-list h6 {
+    font-family: var(--f3);
+    font-size: 16px;
+    padding-bottom: 5px;
+}
+
+
+/* ==========================================================================
+   #MAP BOX
+   ============================================================[WETJ11.19] */
+
+.user-css .map-box:first-of-type{
+    padding-top: 8px;
+}
+
+.user-css .map-box {
+    color: var(--ember-light-d)!important;
+    background: transparent;
+}
+
+.user-css .map-box:hover {
+    opacity: 0.8;
+}
+
+.user-css .map-box div p{
+    margin-bottom: -25px;
+    font-family: var(--f5);
+    font-size: 13px;
+    color: var(--ember-light-d);
+}
+
+.user-css .map-box div {
+    margin: 0px;
+    font-size: 18px;
+    text-align: center;
+    padding: 5px 5px 0px 5px;
+}
+
+.user-css .map-box strong {
+    font-family: var(--f4);
+    font-style: italic;
+    font-size: 18px;
+    text-transform: capitalize;
+    font-variant: normal;
+    color: var(--ember-light);
+    letter-spacing: 0.5px;
+}
+
+.user-css .map-box a .img-responsive {
+    max-height: 175px;
+    overflow: hidden;
+    object-fit: cover!important;
+    object-position: center;
+}
+
+
+
+/* ==========================================================================
+   #FOLLOWERS
+   ============================================================[WETJ11.19] */
+
+.user-css .follower-box {
+    background: var(--ember-dark);
+    color: var(--ember-light);
+    border-radius: 20px;
+}
+
+.user-css .follower-box .card-box-profile-details p{
+    color: var(--ember-light-l);
+}
+
+.user-css .follower-box .img-avatar {
+    border-radius: 0px;
+    background: var(--ember-dark);
+}
+
+.user-css .follower-box .card-box-profile-details h4 a {
+    color: var(--ember-warning-d)!important;
+    font-family: var(--f1);
+    font-size: 20px;
+}
+
+.user-css .follower-box .card-box-profile-details h4 small {
+    color: var(--ember-light);
+    font-size: 16px;
+    font-family: var(--f5);
+    font-variant: normal;
+    text-transform: none;
+}
+
+/* ==========================================================================
+   #TEXT
+   ============================================================[WETJ11.19] */
+
+.article-title h1 {
+    padding-left: 0px;
+}
+
+.user-css .article-subheading {
+    font-size: 22px;
+    text-transform: none;
+    color: var(--ember-danger-l);
+    padding-left: 0px;
+}
+
+.user-css .article-title-author {
+    font-family: var(--f4);
+    font-style: italic;
+    font-size: 18px;
+    color: var(--ember-secondary-l);
+    padding-left: 0px;
+}
+
+
+.user-css-presentation .article-content,
+.user-css p {
+    font-family: var(--f5);
+    font-size: 16px;
+    line-height: 1.5;
+    padding-bottom: 5px;
+    padding-top: 5px;
+}
+
+.user-css b {
+    font-weight: 700;
+}
+
+.user-css small {
+    font-family: var(--f2);
+    font-variant: small-caps!important;
+    text-transform: capitalize;
+    font-size: 12px;
+}
+
+.user-css .dropcap {
+    font-family: var(--f1);
+    color: var(--ember-danger-l);
+}
+
+
+/* Link Text */
+.user-css a,
+.user-css-extended a,
+.tooltipster-content a {
+     color: var(--ember-danger-l);
+}
+
+.user-css a:hover,
+.user-css-extended a:hover,
+.tooltipster-content a:hover{
+         color: var(--ember-warning);
+    text-decoration: none;
+}
+
+/* ==========================================================================
+   #FORMATTING
+   ============================================================[WETJ11.19] */
+
+.user-css .aloud,
+.user-css-extended .aloud {
+    background: var(--ember-danger-d);
+    border-radius: 10px;
+    padding: 20px;
+    border: 4px solid var(--ember-danger);
+    color: var(--ember-white);
+    font-family: var(--f4);
+    font-style: normal;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+.user-css .aloud h2,
+.user-css .aloud h3,
+.user-css .aloud h4 {
+    color: var(--ember-white)!important;
+}
+
+.user-css .aloud a {
+    color: var(--ember-warning-l);
+}
+
+/* Tooltips */
+.user-css .text-abbreviation {
+  text-decoration-line: none;
+  border-bottom-width: 2px;
+  border-bottom-style: dotted;
+  border-color: var(--ember-secondary-l);
+}
+
+.user-css .tooltip,
+.user-css-extended .tooltip {
+    opacity: 1;
+}
+
+.user-css .tooltip.top .tooltip-arrow, 
+.user-css-extended .tooltip.top .tooltip-arrow {
+    border-top-color: var(--ember-danger);
+
+}
+
+.user-css .tooltip.left .tooltip-arrow, 
+.user-css-extended .tooltip.left .tooltip-arrow {
+    border-left-color: var(--ember-danger);
+
+}
+
+.user-css .tooltip.bottom .tooltip-arrow, 
+.user-css-extended .tooltip.bottom .tooltip-arrow {
+    border-bottom-color: var(--ember-danger);
+
+}
+
+.user-css .tooltip.right .tooltip-arrow, 
+.user-css-extended .tooltip.right .tooltip-arrow {
+    border-right-color: var(--ember-danger);
+
+}
+
+.user-css .tooltip .tooltip-inner, 
+.user-css-extended .tooltip .tooltip-inner {
+    background: var(--ember-danger);
+    border-color: var(--ember-danger);
+    font-family: var(--f2);
+    color: var(--ember-light-l);
+    margin-bottom: -1px;
+}
+
+
+.user-css blockquote,
+.user-css-extended blockquote{
+    background: var(--ember-secondary);
+    padding: 20px;
+    margin: 10px;
+    border-left: 10px solid var(--ember-warning);
+    font-family: var(--f6);
+    font-style: italic;
+    font-size: 16px;
+    color: var(--ember-white);
+}
+
+.user-css blockquote .author,
+.user-css-extended blockquote .author {
+    font-family: var(--f4);
+    font-size: 20px;
+    color: var(--ember-warning);
+    padding-top: 10px;
+}
+
+.user-css blockquote a {
+    color: var(--ember-warning-l);
+}
+
+.user-css blockquote .text-center {
+    text-align: center;
+}
+
+
+.user-css .statblock.template-generic_random_table-dimitris-1 h4{
+    color: var(--ember-white)!important;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.user-css .random-table-result {
+    text-align: center;
+    font-size: 16px;
+    font-family: var(--f2);
+}
+
+.user-css .table .btn-primary,
+.user-css-extended .table .btn-primary,
+.user-css-rpgblock .table .btn-primary {
+    margin: 10px 0px 0px 0px;
+}
+
+.user-css .table,
+.user-css .table-striped,
+.user-css-extended .table, {
+    outline: 0px solid ;
+    background: none;
+    hyphens: none;
+    table-layout: fixed;
+}
+
+.user-css .table a {
+    color: var(--ember-warning);
+}
+
+.user-css .table th,
+.user-css .table td,
+.user-css .table tr,
+.user-css-rpgblock .table th,
+.user-css-rpgblock .table td,
+.user-css-rpgblock .table tr,
+.user-css-extended .table th,
+.user-css-extended .table td,
+.user-css-extended .table tr{
+     /*width: min-content;*/
+    border-left: none!important;
+    border-top: none!important;
+    border-bottom: none!important;
+    border-right: none!important;
+    border-left-color: transparent!important;
+    border-top-color: transparent!important;
+    border-bottom-color: transparent!important;
+    border-right-color: transparent!important;
+}
+
+.user-css .table th,
+.user-css-extended .table th,
+.user-css-rpgblock .table th{
+    font-family: var(--f1);
+    font-style: normal;
+    font-weight: 400;
+    letter-spacing: 1px;
+    padding: 10px 15px 10px 15px!important;
+    hyphens: none;
+    
+}
+
+.user-css-rpgblock .table-striped {
+    background: none;
+        hyphens: none;
+    
+}
+
+.user-css .statblock tr:nth-of-type(1n),
+.user-css-extended .statblock tr:nth-of-type(1n),
+.user-css-rpgblock .statblock tr:nth-of-type(1n),
+.user-css-rpgblock tr:nth-of-type(1n) {
+    background: none;
+        hyphens: none;
+
+}
+
+.user-css .table td, .user-css .table th,
+.user-css-extended .table td, .user-css-extended .table th,
+.user-css-rpgblock .table td, .user-css-extended .table th{
+  border: 0px;
+  padding: 10px 15px 10px 15px;
+  text-align: left;
+  vertical-align: middle;
+  hyphens: none;
+}
+
+.user-css .statblock .table tr:nth-child(even),
+.user-css .table tr:nth-child(even),
+.user-css-extended .table tr:nth-child(even),
+.user-css-rpgblock .table tr:nth-child(even),
+.user-css-rpgblock tr:nth-child(even),
+.user-css-rpgblock .table-striped tr:nth-child(even){
+    background: var(--ember-danger);
+        font-size: 16px!important;
+    color: var(--ember-white)!important;
+        hyphens: none;
+    
+}
+
+.user-css .statblock .table tr:nth-child(odd),
+.user-css .table tr:nth-child(odd),
+.user-css-extended .table tr:nth-child(odd),
+.user-css-rpgblock .table tr:nth-child(odd),
+.user-css-rpgblock tr:nth-child(odd)
+.user-css-rpgblock .table-striped tr:nth-child(odd) {
+    background: var(--ember-danger-d);
+        font-size: 16px!important;
+        color: var(--ember-white);
+}
+
+.user-css .statblock .table th,
+.user-css .table th,
+.user-css-extended .table th,
+.user-css-rpgblock .table th{
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: var(--ember-dark);
+  border-top: 0px solid;
+  color: var(--ember-white)!important;
+    font-family: var(--f1);
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 16px;
+}
+
+.user-css .statblock .table tr td,
+.user-css .table tr td,
+.user-css-extended .table tr td,
+.user-css-rpgblock .table tr td {
+    color: var(--ember-white);
+    background: none;
+}
+
+/* Secrets */
+.user-css-secret {
+    background: var(--ember-dark);
+    line-height: 1.4;
+    font-size: 16px;
+    border: 5px solid var(--ember-dark-l);
+    outline: 7px double var(--ember-dark);
+    padding: 20px;
+    color: var(--ember-light-l);
+    margin: 7px;
+    font-family: var(--f3)!important;
+    -webkit-box-shadow: 0px 0px 0px 5px var(--ember-dark-l);
+    -moz-box-shadow: 0px 0px 0px 5px var(--ember-dark-l);
+    box-shadow: 0px 0px 0px 5px var(--ember-dark-l);
+}
+
+.user-css-secret h2,
+.user-css-secret h3,
+.user-css-secret h4,
+.user-css-secret h5 {
+    margin: 0px -25px 0px -25px;
+    padding: 10px 0px 10px 0px;
+    text-align: center;
+    border-bottom: none!important;
+    color: var(--ember-warning)!important;
+}
+
+.user-css-secret small {
+  color: var(--ember-light-d)!important;
+}
+
+.user-css-secret p {
+    color: var(--ember-light-l)!important;
+    line-height: 1.3;
+    font-size: 16px;
+    font-family: var(--f3)!important;
+}
+
+.user-css-secret a {
+    color: var(--ember-warning);
+    text-decoration: underline;
+}
+
+.user-css-secret hr{
+    border-color: var(--ember-warning)!important;
+}
+
+.user-css-secret .secret-groups small {
+    font-size: 13px;
+    color: var(--ember-warning-d)!important;
+}
+.user-css-secret .label.label-primary{
+    font-size: 10px!important;
+    padding: 4px!important;
+    background: var(--ember-danger-d);
+}
+
+.user-css .col-md-4 .statblock.template-generic-text p {
+    font-family: var(--f6);
+}
+
+.user-css .col-md-4 .statblock.template-generic-text hr {
+    margin: 0px;
+}
+
+.user-css .col-md-4 .statblock.template-generic-text h3 {
+    font-family: var(--f4);
+    font-size: 24px;
+    color: var(--ember-warning)!important;
+}
+
+.user-css .col-md-4 .statblock.template-generic-text b {
+    color: var(--ember-danger-l)!important;  
+}
+
+.user-css .col-md-4 .statblock.template-generic-text .btn a {
+    color: var(--ember-white);
+    font-family: var(--f2);
+}
+
+.user-css-extended .panel-default h2,
+.user-css-extended .panel-default h3,
+.user-css-extended .panel-default {
+    background-color: var(--ember-dark);
+    color: var(--ember-light)!important;
+    border-bottom: none;
+}
+
+.user-css-extended .panel-default .panel-heading {
+    color: var(--ember-light);
+    background-color: var(--ember-dark);
+    border: 0px;
+    border-radius: 5px;
+}
+
+/* Spoilers */
+
+.user-css .spoiler-content,
+.user-css-extended .spoiler-content {
+    background: var(--ember-black);
+    color: var(--ember-light-d);
+    border-radius: 10px;
+    border: 0 solid;   
+}
+
+/* Horizontal Rule */
+
+.user-css hr,
+.user-css-extended hr {
+    border-top: 2px solid var(--ember-secondary-l);
+}
+
+/*Dice rolls*/
+.user-css .label.label-roller {
+    background: var(--ember-danger);
+    border-radius: 10px;
+    font-weight: bold;
+}
+
+.notifyjs-corner {
+    position: fixed;
+    margin: 5px;
+    z-index: 3000;
+    right: 25px!important;
+    left: unset!important;
+    bottom: 100px!important;
+}
+
+.notifyjs-bootstrap-roller-alert {
+    background-color: var(--ember-warning-d)!important;
+    padding: 8px 15px!important;
+    color: var(--ember-light-l);
+    text-shadow: none!important;
+    margin-bottom: 5px!important;
+    border-radius: 10px!important;
+}
+
+.notifyjs-bootstrap-base {
+    border: none!important;
+}
+
+/* ==========================================================================
+   #ARTICLES
+   ============================================================[WETJ11.19] */
+
+/* Black On White */
+
+.user-css.bow {
+   background: var(--ember-light)!important;
+} 
+
+.user-css.bow .article-content{
+  color: var(--ember-dark)!important;
+}
+
+.user-css.wob {
+  background: var(--ember-dark-d)!important;
+   box-shadow: 1px 1px 30px 5px var(--ember-black), 
+               0px 0px 500px 10px var(--ember-black) inset;
+    
+} 
+
+.user-css.wob .article-content p{
+      color: var(--ember-light);
+}
+
+.user-css.wob .article-content a,
+.user-css.wob .article-content h,
+.user-css.wob .article-content h2,
+.user-css.wob .article-content h3,
+.user-css.wob .article-content h4 {
+    color: var(--ember-secondary-l);
+}
+
+/* Artist Credits */
+.user-css .artist-credits {
+    padding-top: 5px;
+    text-align: center;
+    color: var(--ember-secondary-l);
+    font-size: 11px;
+    letter-spacing: 0.5px;
+}
+
+.user-css .artist-credits a {
+    padding-top: 5px;
+    text-align: center;
+    color: var(--ember-warning-d);
+}
+
+.user-css .artist-credits a:hover {
+    padding-top: 5px;
+    text-align: center;
+    color: var(--ember-warning);
+}
+
+
+/* ==========================================================================
+   #ARTICLE TEMPLATES
+   ============================================================[WETJ11.19] */
+
+/* Building */
+.user-css .panel .panel-danger {
+    background: var(--ember-danger)!important;
+  border-radius: 20px;
+  border: 0px solid ;
+  padding: 1px;
+}
+
+.user-css .panel .panel-danger div {
+    background: var(--ember-danger);
+  border-radius: 20px;
+  border-top: 0px solid ;
+  border-bottom: 0px solid ;
+  outline: 0px solid;
+      color: var(--ember-light);
+}
+
+.user-css .panel .panel-danger div .text-danger {
+  color: var(--ember-light)!important;
+}
+
+.user-css .text-danger{
+    color: var(--ember-danger)!important;
+}
+
+.user-css .text-warning{
+    color: var(--ember-warning)!important;
+}
+
+.user-css .text-success{
+    color: var(--ember-success)!important;
+}
+
+/* Character */
+.user-css .panel-default.character-relationship-panel {
+  width: auto;
+  margin-top: 10px;
+    box-shadow: none!important;
+  border: none!important;
+}
+
+.user-css .character-relationship-panel h4 {
+  font-family: var(--f4);
+  text-transform: none;
+    font-size: 20px;
+}
+
+.user-css .character-relationship-panel h5 {
+    color: var(--ember-secondary-d)!important;
+}
+
+.user-css .character-relationship-panel h4 .fa-link { 
+  font-size: 14px;
+  color: var(--ember-secondary-l);
+  padding-left: 5px;
+}
+
+.user-css .character-relationship-panel .text-info {
+  font-family: var(--f5);
+  font-weight: bold;
+}
+
+.user-css .character-relationship-panel .text-success p {
+  color: var(--ember-success);
+}
+
+.user-css .character-relationship-panel .text-warning p {
+  color: var(--ember-warning);
+}
+
+.user-css .character-relationship-panel .text-danger p {
+  color: var(--ember-danger-l);
+}
+
+.user-css .character-relationship-panel .m-t-10 {
+  color: var(--ember-light);
+}
+
+.user-css .character-relationship-panel .fa-exchange {
+  color: var(--ember-secondary);
+}
+
+
+/* Document */
+.user-css .modal-content {
+    background: var(--ember-light-l);
+    font-family: var(--f4);
+}
+
+.user-css .modal-content .btn-default {
+    background: var(--ember-danger);
+    color: var(--ember-white);
+}
+
+
+/* Material */
+.user-css .chemical-element {
+    background: none;
+    border: none;
+}
+
+.user-css .chemical-element h1 {
+    font-family: var(--f1);
+    font-size: 64px;
+    font-weight: bold;
+    color: var(--ember-secondary-l)!important;
+}
+
+.user-css .chemical-element small,
+.user-css .chemical-element sup {
+    color: var(--ember-secondary-l);
+    font-size: 18px;
+}
+
+/* Military Conflict */
+
+.user-css.template-militaryConflict .panel-default {
+    background: var(--ember-secondary-d);
+    color: var(--ember-light);
+    box-shadow: 0px 0px 40px -10px var(--ember-dark-d) inset;
+    position: relative;
+    left: 0px;
+    width: 388px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border: 0px;
+    border-radius: 0px;
+    padding: 10px;
+    font-size: 13px;
+  border: none!important; 
+}
+
+.user-css.template-militaryConflict .col-md-7 {
+    width: 65%;
+}
+.user-css.template-militaryConflict .col-md-5 {
+    width: 35%;
+    padding-left: 33px;
+}
+
+.user-css .panel-default.belligerent h4 {
+  text-transform: var(--upper);
+  font-size: 22px;
+  padding-top: 10px;
+  margin-bottom: 10px;
+}
+
+.user-css .panel-default.belligerent .col-md-6 {
+  text-align: center;
+}
+
+/* Organization */
+.user-css .organization-motto h4 {
+  font-family: var(--f3);
+    color: var(--ember-danger)!important;
+    font-size: 20px;
+    text-transform: none;
+  margin-bottom: 10px;
+}
+
+.user-css .relation h5 {
+    font-family: var(--f5);
+    font-size: 14px;
+    letter-spacing: 0px!important;
+}
+
+.user-css .relation .text-muted {
+    color: var(--ember-slate);
+}
+
+.user-css .relation .relationScore {
+    border: none;
+    background: none;
+}
+
+.user-css .relationScore.text-success {
+  color: var(--ember-success);
+}
+
+.user-css .relationScore.text-warning {
+  color: var(--ember-warning);
+}
+
+.user-css .relationScore.text-danger {
+  color: var(--ember-danger-l);
+}
+
+/* Species */
+.user-css .extinction-display{
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+.user-css .extinction-display .display-block {
+  background: var(--ember-danger);
+    font-size: 18px;
+    line-height: 0px;
+    font-family: var(--f2);
+    border-radius: 20px;
+}
+
+/* ==========================================================================
+   #SIDEBAR
+   ============================================================[WETJ11.19] */
+.user-css .panel-default {
+    background: var(--ember-black);
+    color: var(--ember-light-d);
+    border: 0px;
+    border-radius: 10px;
+    padding: 10px;
+    font-size: 13px;
+}
+
+.user-css .panel h2,
+.user-css-extended .panel h2,
+.user-css .panel h3,
+.user-css-extended .panel h3,
+.user-css .panel h4,
+.user-css-extended .panel h4,
+.user-css .panel h5,
+.user-css-extended .panel h5 {
+   color: var(--ember-warning-d);
+   margin-bottom: 10px;
+} 
+
+.user-css .panel a, 
+.user-css-extended .panel a {
+    color: var(--ember-warning);
+}
+
+.user-css .panel a:hover, 
+.user-css-extended .panel a:hover {
+    color: var(--ember-warning-l);
+}
+
+/* ==========================================================================
+   #ARTICLE PANEL
+   ============================================================[WETJ11.19] */
+.user-css .article-panel,
+.user-css-extended .article-panel {
+    padding: 10px;
+    background: var(--ember-dark);
+    border: 0px;
+    box-shadow: -1px 5px 10px var(--ember-black);
+    margin-bottom: 15px;
+}
+
+.user-css .article-panel .heading {
+    font-family: var(--f1);
+    font-weight: bold;
+    text-transform: capitalize;
+    font-style: normal;
+    display: block;
+    font-size: 20px;
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+    padding-top: 5px;
+    color: var(--ember-light-l);
+    text-align: center;
+}
+
+
+.user-css .article-panel .subheading,
+.user-css-extended .article-panel .subheading{
+    display: none;
+}
+
+.user-css .article-panel .excerpt,
+.user-css-extended .article-panel .excerpt{
+    font-family: var(--f3);
+    color: var(--ember-light-d);
+    font-size: 14px;
+    padding: 0px 10px;
+}
+
+.user-css .article-panel:hover,
+.user-css-extended .article-panel:hover{
+    box-shadow: none;
+}
+
+.user-css .panel-default .article-panel{
+    box-shadow: none;
+}
+
+.user-css .panel-default .article-panel h5{
+    text-shadow: none;
+}
+
+/* ==========================================================================
+   #NAVIGATION
+   ============================================================[WETJ11.19] */
+
+
+/* Nav Tabs */
+.user-css .nav-tabs {
+    margin-bottom: -8px!important;
+    margin-right: 9px!important;
+}
+
+.user-css .character-menu {
+    margin-bottom: -1px!important;
+    margin-right: 1px!important;
+}
+
+.user-css .nav-tabs a {
+  margin: 0px -3px 0px 0px!important;
+  height: 30px!important;
+  line-height: 24px;
+}
+
+.user-css .nav-tabs,
+.user-css-extended .nav-tabs {
+    margin-bottom: -1px;
+    margin-right: -2px;
+    border-bottom: 0 solid #ddd;
+    border-radius: 0;
+}
+.user-css .extended-tabs,
+.user-css-extended .extended-tabs {
+    position: relative;
+    left: -19px;
+    top: -34px;
+}
+
+.user-css .nav-tabs li.active a,
+.user-css-extended .nav-tabs li.active a{
+    font-family: var(--f1);
+    font-size: 22px;
+    padding-left: 15px;
+    padding-right: 15px;
+    text-transform: uppercase;
+    border: 1px solid var(--ember-danger-d);
+    border-radius: 0;
+    margin-right: -2px;
+    margin-left: 0;
+    box-shadow: none;
+    color: var(--ember-light);
+    background: var(--ember-danger);
+}
+
+.user-css .nav-tabs li a,
+.user-css-extended .nav-tabs li a {
+    font-family: var(--f1);
+    font-size: 22px;
+    padding-left: 15px;
+    padding-right: 15px;
+    text-transform: uppercase;
+    border: 1px solid var(--ember-dark-d);
+    border-radius: 0;
+    margin-right: -2px;
+    margin-left: 0;
+    box-shadow: none;
+    color: var(--ember-dark-l);
+    background: var(--ember-dark);
+}
+
+.user-css .nav-tabs li a:hover,
+.user-css-extended .nav-tabs li a:hover {
+    font-family: var(--f1);
+    font-size: 22px;
+    padding-left: 15px;
+    padding-right: 15px;
+    text-transform: uppercase;
+    border: 1px solid var(--ember-danger-d);
+    border-radius: 0;
+    margin-right: -2px;
+    margin-left: 0;
+    box-shadow: none;
+    color: var(--ember-light);
+    background: var(--ember-danger);
+
+}
+
+/* Back To World */
+
+.user-css .backtoworld a {
+    position: absolute;
+    top: 0px;
+    margin-left: 0px;
+    padding: 8px 20px 8px 20px;
+    background: var(--ember-danger);
+    font-family: var(--f5);
+    font-style: normal!important;
+    font-size: 14px;
+    letter-spacing: 0.5px;
+    color: var(--ember-light);
+    box-shadow: none;   
+    transition: background 0.3s;
+}
+
+.user-css .backtoworld a:active {
+    color: var(--ember-white);
+}
+
+.user-css .backtoworld a:hover {
+  color: var(--ember-light-l);
+        background: var(--ember-danger-d);
+        transition: background 1s;
+}
+
+/* Nav Strip */
+.user-css .nav-strip {
+    padding: 8px;
+    background-color: var(--ember-danger);
+    font-family: var(--f5);
+    font-style: normal!important;
+    font-size: 16px;
+    letter-spacing: 0.5px;
+    color: var(--ember-light);
+    box-shadow: none;
+} 
+
+.user-css .nav-strip a {
+    color: var(--ember-light);
+}
+
+.user-css .nav-strip a:hover {
+    color: var(--ember-white);
+}
+
+.user-css.page-followers .nav-strip {
+    display: block;
+    z-index: 0;
+    top: 0px;
+}
+
+/* Next Previous Article */
+
+.user-css .article-horizontal-navigation {
+    font-family: var(--f4);
+    font-size: 20px;
+    letter-spacing: 1px;
+    padding-right: 25px;
+}
+
+.user-css .article-social-media strong {
+    font-family: var(--f2);
+    color: var(--ember-secondary);
+}
+
+
+/* ==========================================================================
+   #SEARCH
+   ============================================================[WETJ11.19] */
+
+.user-css .search-form .form-group {
+    position: relative;
+}
+
+.user-css .search-form button {
+    position: relative;
+    top:  1px;
+    right: 40px;
+    color: var(--ember-secondary-d)!important;
+}
+
+.user-css .search-form .typeahead-input {
+	width: 200px;
+	height: 20px;
+	padding: 15px 0px 15px 10px;
+	font-family: var(--f2);
+	font-size: 16px;
+	text-transform: uppercase;
+    color: var(--ember-secondary-l);
+	background-color: var(--ember-dark-d);
+	background-image: none;
+	border-radius: 0px;
+    box-shadow: none!important;
+}
+
+.user-css .typeahead.dropdown-menu li.active .dropdown-item {
+    background: var(--ember-dark);
+}
+
+.user-css .typeahead.dropdown-menu li {
+    background: var(--ember-dark-d);
+}
+
+.user-css .typeahead.dropdown-menu li a {
+    color: var(--ember-light);
+}
+
+.user-css .typeahead.dropdown-menu .text-muted {
+    color: var(--ember-secondary-l);
+}
+
+
+
+/* ==========================================================================
+   #MAP
+   ============================================================[WETJ11.19] */
+
+.user-css-presentation .leaflet-grab{
+    background: #261d1d;
+    box-shadow: inset 0 0 50px #000;
+    -moz-box-shadow: inset 0 0 50px #000;
+    -webkit-box-shadow: inset 0 0 50px #000;
+}
+
+.user-css-presentation .leaflet-grab .legend{
+    background: #4d4545;
+    border-radius: 10px;
+    padding: 5px 15px;
+}
+
+
+.map-context-user-css {
+    background-color: #261d1d;
+ }
+
+.map-context-user-css.map-wrapper .nav-strip {
+    position: absolute;
+    top: 10px;
+    right: 62px;
+    padding: 8px 11px;
+    z-index: 10000;
+    background-color: black;
+    font-style: normal!important;
+    font-size: 14px;
+    box-shadow: none; 
+    background: #a64242!important;
+}
+
+.map-context-user-css.map-wrapper .nav-strip a {
+    color: white!important; 
+}
+
+.map-context-user-css.map-wrapper .menu-control {
+   display: none;
+}
+
+.user-css-map-sidebar {
+    background: var(--ember-light);
+    box-shadow: 0px 0px 100px -10px var(--ember-secondary-d) inset;
+    font-family: var(--f5);
+    font-size: 14px;
+    line-height: 1.6;
+    color: #1a2126;
+}
+
+.user-css-map-sidebar .content-wrapper.p-3 {
+    padding: 40px!important;
+}
+
+.user-css-map-sidebar h1 {
+    padding-bottom: 20px;
+}
+
+#sidebarCollapse {
+    position: absolute;
+    left: 0;
+    top: 150px;
+    z-index: 1500;
+    padding: 7px;
+    background-color: #3d404d;
+    color: #dddddd;
+    display: block;
+}
+
+.user-css-map-sidebar .btn-secondary {
+    background: #a64242;
+    border: 1px solid #a64242;
+    color: #edfcff;
+        border-radius: 10px;
+    font-family: Nunito;
+}
+
+.user-css-map-sidebar .btn-secondary:hover {
+    background: #d9584c;
+    border: 1px solid #d9584c;
+    color: #edfcff;
+        border-radius: 10px;
+    font-family: Nunito;
+}
+
+.user-css-map-sidebar .btn-info {
+    background: #0c9a77;
+    border: 1px solid #0c9a77;
+    color: #edfcff;
+    font-family: Nunito;
+        border-radius: 10px;
+}
+
+.user-css-map-sidebar .btn-info:hover {
+    background: #0a665e;
+    border: 1px solid #0a665e;
+    color: #edfcff;
+    border-radius: 10px;
+    font-family: Nunito;
+}
+
+.user-css-map-sidebar .btn-primary {
+    background: #3665a2;
+    border: 1px solid #3665a2;
+    color: #edfcff;
+    font-family: Nunito;
+        border-radius: 10px;
+}
+
+.user-css-map-sidebar .btn-info:hover {
+    background: #1e73a0;
+    border: 1px solid #1e73a0;
+    color: #edfcff;
+    border-radius: 10px;
+    font-family: Nunito;
+}
+
+.user-css-map-sidebar .alert-primary {
+    display: none;
+}
+
+.leaflet-popup,
+.leaflet-popup h5 {
+    font-family: Nunito!important;
+}
+
+.leaflet-popup-tip,
+.leaflet-popup-content-wrapper {
+    background: #3d404d!important;
+    color: white;
+}
+
+.leaflet-popup-tip h5,
+.leaflet-popup-content-wrapper h5 {
+    color: white;
+}
+
+
+.leaflet-control-zoom-in,
+.leaflet-control-zoom-out,
+.leaflet-control-layers,
+.leaflet-control-layers-base span{
+    background: #4d4545!important;
+    color: #fff!important;
+    border-color: #4d4545!important;
+}
+
+
+/* ==========================================================================
+   #METADATA
+   ============================================================[WETJ11.19] */
+
+/* Comments */
+.user-css-extended .col-sm-10 .form-control,
+.user-css-extended .comment-form textarea {
+    background: var(--ember-secondary);
+    border-radius: 15px;
+    padding: 10px;
+    color: var(--ember-white);
+}
+
+.user-css-extended .form-control::placeholder {
+    color: var(--ember-white-d);
+}
+
+.user-css-extended .comment-box {
+    background: var(--ember-secondary-d);
+    color: var(--ember-light-d);
+}
+
+.user-css-extended .comment-box .comment-box-reply {
+    border-top: 2px dotted var(--ember-secondary-l);
+}
+
+.user-css-extended .comment-box-author a {
+    font-family: var(--f5);
+    font-size: 16px;
+    color: var(--ember-warning)!important;
+}
+
+.user-css-extended .comment-box p {
+    font-size: 14px;
+    font-family: var(--f5);
+    color: var(--ember-light);
+}
+
+
+.user-css-extended .comment-box-date {
+    font-size: 12px;
+    color: var(--ember-secondary-l);
+}
+
+.user-css-presentation .alert {
+    padding: 10px;
+    border-radius: 0px;
+    border: 0px solid;
+}
+
+.user-css-presentation .alert-success {
+    color: var(--ember-light);
+    font-family: var(--f2);
+    font-style: normal;
+    font-size: 22px;
+    text-align: center;
+    background-color: var(--ember-success);
+    border: 0px solid;
+}
+
+.user-css-extended .comment-box div a {
+    color: var(--ember-primary);
+}
+
+.user-css-extended .comment-box div .text-danger {
+    color: var(--ember-danger);
+    padding-left: 10px;
+}
+
+
+/* Avatars */
+.user-css-extended .comment-box-avatar .img-avatar {
+    border-radius: 0px!important;
+}
+
+
+/* ==========================================================================
+   #TIMELINES
+   ============================================================[WETJ11.19] */
+
+/* Timeline Page*/
+.user-css.page-timeline .col-md-8 {
+    width: 100%;
+    margin-left: 0;
+}
+
+.user-css-extended .tab-content div#timeline.tab-pane {
+    margin: 0px 60px;
+}
+
+.user-css .timeline .label-default,
+.user-css-extended .timeline .label-default {
+    background: var(--ember-secondary);
+    color: var(--ember-light)!important;
+}
+
+/* Timeline Text */
+.user-css .timeline-entry .tl-heading,
+.user-css-extended .timeline-entry .tl-heading {
+   text-align: center;
+}
+
+.user-css .timeline-entry .tl-heading small,
+.user-css-extended .timeline-entry .tl-heading small {
+   color: var(--ember-secondary-l);
+}
+
+.user-css .timeline-entry,
+.user-css-extended .timeline-entry,
+.user-css .timeline-entry .history-content p,
+.user-css-extended .timeline-entry .history-content p{
+   color: var(--ember-light);
+    font-family: var(--f5);
+    line-height: 1.5!important;
+    font-size: 14px;
+  padding: 5px;
+}
+
+.user-css.page-timeline h2 {
+    border-bottom: none;
+}
+
+.user-css-extended .era-header h2 {
+  color: var(--ember-danger-l)!important;
+  border-bottom: none;
+}
+
+.user-css.page-timeline .era-header .text-muted,
+.user-css-extended .era-header .text-muted {
+    color: var(--ember-light-d)!important;
+    font-family: var(--f1);
+    font-weight: bold!important;
+    font-size: 20px;
+}
+
+
+.user-css .timeline-entry .tl-heading .tl-heading-date,
+.user-css-extended .timeline-entry .tl-heading .tl-heading-date {
+   color: var(--ember-light);
+}
+
+.user-css .timeline-entry .tl-heading h4 ,
+.user-css-extended .timeline-entry .tl-heading h4 {
+   font-variant: none;
+   text-transform: uppercase;
+   font-weight: var(--bold);
+   font-size: 20px;
+    color: var(--ember-white)!important;
+}
+
+
+
+/* Centered Icons */
+.user-css-extended .timeline .header-icon,
+.user-css .timeline .header-icon {
+    text-align: center;
+    padding: 12px;
+}
+
+/* Middle Line */
+.user-css .timeline:before,
+.user-css-extended .timeline:before {
+    background-color: var(--ember-secondary);
+    width: 3px;
+}
+
+.user-css .timeline li .tl-circ,
+.user-css-extended .timeline li .tl-circ {
+    border: 3.5px solid var(--ember-secondary);
+    background: var(--ember-dark-d);
+  padding: 10px;
+  margin-left: -13px;
+} 
+
+/* Timeline Entry Styling */
+.user-css .timeline-entry-milestone,
+.user-css-extended .timeline-entry-milestone{
+      background: var(--ember-black);
+   box-shadow: none;
+    border-radius: 0px; 
+}
+
+.user-css .timeline li .timeline-panel,
+.user-css-extended .timeline li .timeline-panel {
+   background: var(--ember-secondary-d);
+   box-shadow: none;
+    border-radius: 0px;
+
+}
+
+.user-css .timeline-entry-milestone hr,
+.user-css .timeline li .timeline-panel hr,
+.user-css-extended .timeline-entry-milestone hr,
+.user-css-extended .timeline li .timeline-panel hr {
+   border-top: 1px solid var(--ember-secondary-l)!important;
+}
+
+.user-css .timeline-entry-inverted .timeline-panel:before {
+  border: 0px solid transparent!important;
+}
+
+/* Currently breaks if you add .user-css */
+.timeline-entry .timeline-panel:nth-of-type(2):after {
+    position: absolute;
+    top: 30px;
+    right: -15px;
+    display: inline-block;
+    border-top: 16px solid transparent;
+    border-left: 16px solid var(--ember-secondary-d);
+    border-right: 0px solid var(--ember-secondary-d);
+    border-bottom: 16px solid transparent;
+}
+
+.user-css .timeline li .timeline-panel::before {
+    border-left: 0px solid transparent;
+    border-right: 0px solid transparent;
+}
+
+/* Milestone / Era Changing */
+.user-css .timeline .timeline-entry-milestone,
+.user-css-extended .timeline .timeline-entry-milestone {
+    border: 8px var(--ember-black) solid;
+}
+
+.user-css .timeline .timeline-entry-milestone .header-icon,
+.user-css-extended .timeline .timeline-entry-milestone .header-icon {
+    border: 8px var(--ember-black) solid;
+    color: var(--ember-black);
+    background-color: var(--ember-dark-d);
+}
+
+/* Major / Global */
+.user-css .timeline .major .timeline-panel,
+.user-css-extended .timeline .major .timeline-panel {
+    border-top: 8px var(--ember-warning) solid;
+}
+
+.user-css .timeline .major .header-icon,
+.user-css-extended .timeline .major .header-icon {
+    border: 8px var(--ember-warning) solid;
+    color: var(--ember-warning);
+    background-color: var(--ember-dark-d);
+}
+
+/* Important / National */
+.user-css .timeline .important .timeline-panel,
+.user-css-extended .timeline .important .timeline-panel {
+    border-top: 8px var(--ember-success) solid;
+}
+
+.user-css .timeline .important .header-icon,
+.user-css-extended .timeline .important .header-icon {
+    border: 8px var(--ember-success) solid;
+    color: var(--ember-success);
+    background-color: var(--ember-dark-d);
+}
+
+/* Minor / Regional */
+.user-css .timeline .minor .timeline-panel,
+.user-css-extended .timeline .minor .timeline-panel {
+    border-top: 8px var(--ember-primary) solid;
+}
+
+.user-css .timeline .minor .header-icon,
+.user-css-extended .timeline .minor .header-icon {
+    border: 8px var(--ember-primary) solid;
+    color: var(--ember-primary);
+    background-color: var(--ember-dark-d);
+}
+
+/* Trivial / Personal */
+.user-css .timeline .trivial .timeline-panel,
+.user-css-extended .timeline .trivial .timeline-panel {
+    border-top: 8px var(--ember-danger-l) solid;
+}
+
+.user-css .timeline .trivial .header-icon,
+.user-css-extended .timeline .trivial .header-icon {
+    border: 8px var(--ember-danger-l) solid;
+    color: var(--ember-danger-l);
+    background-color: var(--ember-dark-d);
+}
+
+/* Miscellaneous / No Importance */
+.user-css .timeline .no-importance .timeline-panel,
+.user-css-extended .timeline .no-importance .timeline-panel {
+    border-top: 8px var(--ember-secondary-l) solid;
+}
+
+.user-css .timeline .no-importance .header-icon,
+.user-css-extended .timeline .no-importance .header-icon {
+    border: 8px var(--ember-secondary-l) solid;
+    color: var(--ember-secondary-l);
+    background-color: var(--ember-dark-d);
+}
+
+/* Orphan Histories */
+.user-css .era.orphan-era .alert-warning {
+    color: var(--ember-light);
+    border-radius: 0px;
+    border-color: transparent;
+    background-color: var(--ember-dark);
+}
+
+.user-css .timeline-entry .history-timelines h5,
+.user-css-extended .timeline-entry .history-timelines h5{
+    color: var(--ember-secondary);
+    font-size: 18px;
+}
+
+.user-css .timeline-entry h4,
+.user-css-extended .timeline-entry h4{
+    font-family: var(--f1);
+    font-size: 18px!important;
+}
+
+.user-css .timeline-panel .date,
+.user-css-extended .timeline-panel .date{
+    font-family: var(--f4);
+}
+
+/* ==========================================================================
+   #BUTTONS AND LABELS
+   ============================================================[WETJ11.19] */
+
+.user-css .btn,
+.user-css-extended .btn {
+    border: 0px solid!important;
+    padding: 5px 12px 5px 12px;
+    font-family: var(--f5);
+    font-weight: bold;
+    text-transform: uppercase;
+    border-radius: 5px;
+}
+
+
+
+.user-css .btn-secondary{
+    background: var(--ember-secondary);
+    color: var(--ember-light-l);
+}
+
+.user-css .btn-light{
+    background: var(--ember-light);
+    color: var(--ember-dark-l);
+}
+
+.user-css .btn-dark{
+    background: var(--ember-dark);
+    color: var(--ember-light-l);
+}
+
+.user-css .btn-success,
+.user-css-extended .btn-success {
+    background: var(--ember-success)!important;
+}
+
+.user-css .btn-success:hover,
+.user-css-extended .btn-success:hover,
+.user-css .btn-primary:hover,
+.user-css-extended .btn-primary:hover,
+.user-css .btn-danger:hover,
+.user-css-extended .btn-danger:hover,
+.user-css .btn-info:hover,
+.user-css-extended .btn-info:hover{
+    background: var(--ember-dark-l)!important;
+}
+
+.user-css .btn-primary,
+.user-css-extended .btn-primary {
+    background: var(--ember-primary)!important;
+}
+
+.user-css .btn-danger,
+.user-css-extended .btn-danger {
+    background: var(--ember-danger)!important;
+}
+
+.user-css .btn-info,
+.user-css-extended .btn-info {
+    background: var(--ember-primary-l)!important;
+}
+
+.user-css .label,
+.user-css-extended .label{
+    display: inline-block;
+    padding: 5px!important;
+    margin: 2px!important;
+    font-size: 12px!important;
+    font-weight: 400;
+    font-family: var(--f5)!important;
+    line-height: normal!important;
+    color: var(--ember-light-l);
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: 5px;
+
+}
+
+.user-css .label-primary,
+.user-css-extended .label-primary {
+    background: var(--ember-primary);
+}
+
+.user-css .label-default,
+.user-css-extended .label-default {
+    background: var(--ember-secondary);
+}
+
+
+
+/* ==========================================================================
+   #WHITE LABEL
+   ============================================================[WETJ11.19] */
+
+.user-css-presentation .widget-white-label-mark {
+    position: fixed;
+    bottom: 100px;
+    left: 0;
+    background: var(--ember-dark-d);
+    padding: 2px 16px;
+    color: var(--ember-secondary-d)!important;
+    opacity: 1;
+}
+
+.user-css-presentation .widget-white-label-mark a {
+    color: var(--ember-dark-l);
+}
+
+.user-css-presentation .widget-white-label-mark a:hover {
+    color: var(--ember-success);
+}
+
+/*calendars*/
+.user-css .calendar-presentation {
+    background: none;
+}
+
+.user-css .calendar-presentation .panel h2,
+.user-css .calendar-presentation .panel h3{
+    text-shadow: none;
+    color: var(--ember-warning);
+}
+
+.user-css .calendar-presentation .panel {
+    box-shadow: none!important;
+    background: none;
+    border: none;
+    padding: 0px;
+}
+
+.user-css .calendar-presentation .nav-item a {
+    background: var(--ember-danger-d);
+    color: var(--ember-light);
+    font-family: var(--f2);
+    font-size: 14px;
+    border-radius: 0px;
+    text-align: center;
+}
+
+.user-css .calendar-presentation .nav-item a:hover {
+    background: var(--ember-danger);
+}
+
+.user-css .calendar-presentation li.nav-item.active a {
+    background: var(--ember-danger);
+}
+
+.user-css th.calendar-weekday  {
+    font-size: 12px;
+    text-align: center;
+    font-family: var(--f5);
+    outline: 1px solid var(--ember-dark-l);
+    background: var(--ember-dark-d);
+}
+
+.user-css .calendar-presentation .tab-content .calendar-day{
+    background: var(--ember-dark);
+    outline: 2px solid var(--ember-dark-l);
+    padding: 10px!important;
+    text-align: left;
+    vertical-align: top;
+    hyphens: none;
+    color: var(--ember-light);
+    font-size: 13px;
+    
+}
+
+
+.user-css .calendar-presentation .tab-content .calendar-day:hover{
+    background: var(--ember-dark-d);
+}
+
+
+.user-css .calendar-presentation table {
+    display: table;
+    table-layout: fixed;
+}
+
+.user-css .calendar-presentation .btn-secondary {
+    background: var(--ember-warning-d);
+    color: var(--ember-dark-d);
+    padding: 4px 7px;
+}
+
+.user-css .calendar-presentation .btn-secondary:hover {
+    background: var(--ember-danger);
+    color: var(--ember-dark-d);
+    padding: 4px 7px;
+}
+
+.user-css .calendar-presentation .calendar-day h3 {
+    font-size: 18px;
+    border-bottom: none;
+    margin-top: -5px;
+}
+
+.user-css .calendar-presentation .nav-pills{
+    margin-left: 10px;
+}
+
+.user-css .calendar-presentation .nav-pills .nav-item{
+    display: inline-table;
+    width: 19%; 
+    margin: auto 1px;
+}
+
+.user-css .modal-content .article-panel {
+    background: var(--ember-secondary-d);
+}
+
+.user-css .modal-content .article-panel h5,
+.user-css .modal-content .article-panel p{
+        color: var(--ember-light-l);
+}
+
+.user-css #modal-holiday-reader .modal-dialog,
+.user-css .modal-content{
+    background: var(--ember-dark-d);
+}
+
+
+.user-css #modal-holiday-reader .celestials .moon,
+.user-css #modal-holiday-reader .celestials .moon-flip{
+    left: auto;
+    width: 25px;
+    height: 25px;
+    bottom: auto;
+}
+
+.user-css #modal-holiday-reader button.close,
+.user-css .modal button.close{
+    font-size: 35px;
+    color: var(--ember-danger-l);
+    opacity: 1;
+    text-shadow: none;
+}
+
+.user-css #modal-holiday-reader .celestials .celestial-object,
+.user-css #modal-holiday-reader .celestials .celestial-icon {
+    width: auto;
+    height: auto;
+} 
+
+.user-css .calendar-presentation .btn.celestial-object {
+    background: transparent;
+}
+
+.user-css .calendar-presentation .moon,
+.user-css .calendar-presentation .moon-flip{
+    left: 4px;
+    width: 70%;
+    height: 70%;
+    bottom: 5px;
+}
+
+.user-css .calendar-presentation .celestial-icon {
+    left: 15%;
+    bottom: 15%;
+    display: none;
+}
+
+.user-css .panel-greatgm {
+    background: var(--ember-secondary-d);
+    border: none;
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+.user-css .panel-greatgm a {
+    color: var(--ember-primary-l)!important;
+}
+
+
+.user-css .copyright-attribution {
+    color: var(--ember-secondary-l);
+}         
+
+.user-css .booktitle {
+    background: var(--ember-danger-d);
+    color: var(--ember-white);
+    font-family: var(--f2);
+}
+
+.user-css-presentation #world-navigation-sidebar {
+    width: 35%; /*stops width from stretching if maps have long descriptions*/
+    scrollbar-color: darkred #222; /*scrollbar colour*/
+    background: #282828;
+    box-shadow: 5px 13px 20px rgba(0,0,0,0.4); /*shadow*/
+}
+
+.user-css-presentation .world-navigation-palette-trigger {
+    padding: 10px; /*centers icon*/
+    background: darkred;
+    color: white;
+}
+
+.user-css-presentation .world-navigation-palette-trigger:hover  {
+    color: black; /*hover colour*/
+}
+
+.user-css-presentation #world-navigation-sidebar .category-list h6 ul li {
+    padding-top: 6px; /*fix padding for child articles in ToC*/
+}
+
+.user-css-presentation #world-navigation-sidebar h5 {
+    font-size: 18px;
+    line-height: 1.4;
+    padding: 0;
+}
+
+
+.user-css .panel-npcsheet,
+.user-css .panel-plots,
+.user-css .panel-generic-ggm {
+    background: #000;
+    border: 0px solid;
+}
+
+.user-css .world-meta-section .world-title {
+  padding-bottom: 20px;
+}
+
+.user-css .world-meta-menu .list-box.selected {
+  background: rgba(255, 0, 0, 0.25);
+  padding: 5px;
+}
+
+.user-css .world-meta-menu .list-box {
+  padding: 0px 5px;
+}
+
+.user-css .world-meta-section h2 {
+  margin: 35px 0px 5px 0px;
+}
+
+.user-css .world-meta-section h3 {
+  margin: 15px 0px 0px 0px;
+}
